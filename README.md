@@ -24,7 +24,7 @@ I am sharing this code in part because the current software solutions are either
 
 ## Core technologies used
 
-### .NET Standard 2.0
+ ### .NET Standard 2.0
 
 I believe Microsoft has taken a long needed step in the right direction to create a .net assembly that can be run cross platform.  While it is still early, I feel like this has the potential to be incredibly flexibile when moving the code forward to a place where it can truely run on any device.  All non-presentation layer code is written in .NET Standard assemblies.
 
@@ -60,18 +60,18 @@ Below is the project structure.  The dependency chain flows from the bottom up. 
 
 ### UWP Solution
 
-+ AppDomain project - Foundational classes, Enterprise business logic
-+ CoreApp project - Core business logic
-+ Interfaces project - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
++ AppDomain project (Shared) - Foundational classes, Enterprise business logic
++ CoreApp project (Shared) - Core business logic
++ Interfaces project (Shared) - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
 + Repository project(s) - Data storage
 + Algo Implementations - Scoring, flight matrix sorting, etc... 
 + UWP Application project - Presentation layer
 
 ### Contest Host (website) Solution
 
-+ AppDomain project - Foundational classes, Enterprise business logic
-+ CoreApp project - Core business logic
-+ Interfaces project - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
++ AppDomain project (Shared) - Foundational classes, Enterprise business logic
++ CoreApp project (Shared) - Core business logic
++ Interfaces project (Shared) - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
 + Repository project - Data storage
 + Site project - Presentation layer / Website, API's, SignalR hub
 
