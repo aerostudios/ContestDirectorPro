@@ -60,19 +60,21 @@ Below is the project structure.  The dependency chain flows from the bottom up. 
 
 ### UWP Solution
 
-+ AppDomain project (Shared) - Foundational classes, Enterprise business logic
-+ CoreApp project (Shared) - Core business logic
-+ Interfaces project (Shared) - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
++ AppDomain project (shared) - Foundational classes, Enterprise business logic
++ CoreApp project (shared) - Core business logic
++ Interfaces project (shared) - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
 + Repository project(s) - Data storage
 + Algo Implementations - Scoring, flight matrix sorting, etc... 
 + UWP Application project - Presentation layer
++ Common project (shared) - Cross cutting features and classes, breaks the dependency rules.  Ex: Logging classes
 
 ### Contest Host (website) Solution
 
-+ AppDomain project (Shared) - Foundational classes, Enterprise business logic
-+ CoreApp project (Shared) - Core business logic
-+ Interfaces project (Shared) - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
++ AppDomain project (shared) - Foundational classes, Enterprise business logic
++ CoreApp project (shared) - Core business logic
++ Interfaces project (shared) - Defines functionality and repositories.  Lightweight, want to extend the app, you don't need to inherit everything to do it.
 + Repository project - Data storage
 + Site project - Presentation layer / Website, API's, SignalR hub
++ Common project (shared) - Cross cutting features and classes, breaks the dependency rules.  Ex: Logging classes
 
 One other thing I took from Uncle Bob was what he calls 'Screaming Architecture' in the project structures.  Still not sure why he calls everything 'architecture'...  When you look at the projects, the folders may not look familiar if you are used to MVC (ASP.NET / Ruby) or MVVM (UWP).  There aren't any 'ViewModel' or strict 'Model' folders for instance.  All of the code is organized by the feature it supports.  This does two core things: It makes it really easy to figure out where the code is, and it tends to separate code by feature organically.  Developers don't tend to write sharable code that tightly couples features as readily in my experience.  It's also easy to create and remove features.  For instance a lot of cases you can just delete the feature folder and build if you want to remove a feature. 
