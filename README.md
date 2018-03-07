@@ -99,7 +99,7 @@ The server (Contest 'Host' website) exposes two kinds of endpoints: REST endpoin
 
 I'm not going to document all the API's here just yet as they are still in flux.  However, below is a list of SignalR endpoints available on the server now that are pretty well established:
 
-~~~
+```csharp
    /// <summary>
    /// Handles the FinalTimeSheetPosted event / message.
    /// </summary>
@@ -149,4 +149,4 @@ I'm not going to document all the API's here just yet as they are still in flux.
    /// <returns></returns>
    public async Task RoundTimerClockPing(RoundTimerEventArgs args) ...
         
-~~~
+```
