@@ -2,11 +2,11 @@
 
 CDPro is a set of software components that enhance the contest management task for R/C glider competitions.  Currently, the software suite contains a UWP application to run the contest and an ASP.NET Core site to 'host' the contests.
 
-<img src="Documentation/Images/RunContestExample.png" alt="Example of CDPro running a contest" style="width: 800px;"/>
+<img src="Documentation/Images/RunContestExample.PNG" alt="Example of CDPro running a contest" style="width:400px;"/>
 
 Example contest running in the UWP applicaton.  Notice the real-time scores from the timer, a submitted timesheet for the pilot and the updated flight group entry for the pilot.
 
-<img src="Documentation/Images/TimerRunning.png" alt="Example of CDPro running a contest" style="height: 400px;"/>
+<img src="Documentation/Images/TimerRunning.png" alt="Example of CDPro running a contest" style="width:100px;"/>
 
 Example of the timer running.  Notice the pilot name, task name, time remaining in the flight window and previously recorded flight times 
 
