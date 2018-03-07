@@ -87,4 +87,66 @@ Below is the project structure.  The dependency chain flows from the bottom up (
 
 ### Final thoughts on project layouts
 
-One other thing I took from Uncle Bob was what he calls 'Screaming Architecture' in the project structures.  Still not sure why he calls everything 'architecture'...  When you look at the projects, the folders may not look familiar if you are used to MVC (ASP.NET / Ruby) or MVVM (UWP).  There aren't any 'ViewModel' or strict 'Model' folders for instance.  All of the code is organized by the feature it supports.  This does two core things: It makes it really easy to figure out where the code is, and it tends to separate code by feature organically.  Developers don't tend to write sharable code that tightly couples features as readily in my experience.  It's also easy to create and remove features.  For instance a lot of cases you can just delete the feature folder and build if you want to remove a feature. 
+One other thing I took from Uncle Bob was what he calls 'Screaming Architecture' in the project structures.  Still not sure why he calls everything 'architecture'...  When you look at the projects, the folders may not look familiar if you are used to MVC (ASP.NET / Ruby) or MVVM (UWP).  There aren't any 'ViewModel' or strict 'Model' folders for instance.  All of the code is organized by the feature it supports.  
+
+This does two core things: 1. It makes it really easy to figure out where the code is that runs a feature area of your product, and 2. It tends to separate code by features organically.  If you create a folder labeled 'Sign in', developers will probably throw any new code related to that feature in there and keep things tidy.  
+
+Also developers like to write sharable code (good).  In some cases, it shouldn't be shared as it tightly couples features (bad).  Dropping code in a folder that doesn't match up feels weird, so in a small way it helps contributors keep code separated.  It's also easy to remove features.  For instance, in a lot of cases you can just delete the feature folder and clean up a few entry points if you want to remove a feature.
+
+## API's
+
+The server (Contest 'Host' website) exposes two kinds of endpoints: REST endpoints and SignalR endpoints.  Pick your poison, by the time this code reaches 1.0, my hope is that they are mirrored as much as possible.  That way the developer looking to build a phone app to use instead of the browser can choose either a push or a pull model (push would be preferred for the clients, but up to the implementor).
+
+I'm not going to document all the API's here just yet as they are still in flux.  However, below is a list of SignalR endpoints available on the server now that are pretty well established:
+
+~~~
+   /// <summary>
+   /// Handles the FinalTimeSheetPosted event / message.
+   /// </summary>
+   /// <param name="args">The <see cref="FinalTimeSheetPostedEventArgs"/> instance containing the event data.</param>
+   /// <returns></returns>
+   public async Task FinalTimeSheetPosted(FinalTimeSheetPostedEventArgs args) ...
+
+   /// <summary>
+   /// Handles the FlightTimerStopped event / message.
+   /// </summary>
+   /// <param name="args">The <see cref="FlightTimerEventArgs"/> instance containing the event data.</param>
+   /// <returns></returns>
+   public async Task FlightTimerStopped(FlightTimerEventArgs args)...
+
+   /// <summary>
+   /// Handles the FlightTimerStarted event / message.
+   /// </summary>
+   /// <param name="args">The <see cref="FlightTimerEventArgs"/> instance containing the event data.</param>
+   /// <returns></returns>
+   public async Task FlightTimerStarted(FlightTimerEventArgs args) ...
+
+   /// <summary>
+   /// Handles the NewRoundAvailable event / message.
+   /// </summary>
+   /// <param name="args">The <see cref="NewRoundAvailableEventArgs"/> instance containing the event data.</param>
+   /// <returns></returns>
+   public async Task NewRoundAvailable(NewRoundAvailableEventArgs args) ...
+
+   /// <summary>
+   /// Handles the RoundTimerStarted event / message.
+   /// </summary>
+   /// <param name="args">The <see cref="RoundTimerEventArgs"/> instance containing the event data.</param>
+   /// <returns></returns>
+   public async Task RoundTimerStarted(RoundTimerEventArgs args) ...
+
+   /// <summary>
+   /// Handles the RoundTimerStopped event / message.
+   /// </summary>
+   /// <param name="args">The <see cref="RoundTimerEventArgs"/> instance containing the event data.</param>
+   /// <returns></returns>
+   public async Task RoundTimerStopped(RoundTimerEventArgs args) ...
+
+   /// <summary>
+   /// Handles the RoundTimerClockPing event / message.
+   /// </summary>
+   /// <param name="args">The <see cref="RoundTimerEventArgs"/> instance containing the event data.</param>
+   /// <returns></returns>
+   public async Task RoundTimerClockPing(RoundTimerEventArgs args) ...
+        
+~~~
