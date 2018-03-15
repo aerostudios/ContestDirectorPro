@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddPilotPage_btnSave.Text" xml:space="preserve">
+    <value>Save</value>
+    <comment>Btn text to save and go back to the previous page</comment>
+  </data>
+  <data name="AddPilotPage_btnSaveAndCreateAnother.Text" xml:space="preserve">
+    <value>Save and add another</value>
+    <comment>Btn text save and create another pilot</comment>
+  </data>
+  <data name="AddPilotPage_lblAirframe.Text" xml:space="preserve">
+    <value>Airframe:</value>
+    <comment>Label for the airframe input</comment>
+  </data>
+  <data name="AddPilotPage_lblAmaNumber.Text" xml:space="preserve">
+    <value>AMA Number:</value>
+    <comment>Label for the Ama number input</comment>
+  </data>
+  <data name="AddPilotPage_lblFirstName.Text" xml:space="preserve">
+    <value>First name:</value>
+    <comment>Label for the first name input</comment>
+  </data>
+  <data name="AddPilotPage_lblLastName.Text" xml:space="preserve">
+    <value>Last name:</value>
+    <comment>Label for the last name input</comment>
+  </data>
+  <data name="AddPilotPage_PageHeader.Text" xml:space="preserve">
+    <value>Add new pilot</value>
+    <comment>This is displayed at the top of the page</comment>
+  </data>
+  <data name="ContestInfoPage_btnNextPage.Text" xml:space="preserve">
+    <value>Next</value>
+    <comment>Button label to take the user to the next page</comment>
+  </data>
+  <data name="ContestInfoPage_lblAllowDrop.Text" xml:space="preserve">
+    <value>Allow dropped round?</value>
+    <comment>Label for the Allow Dropped round input</comment>
+  </data>
+  <data name="ContestInfoPage_lblContestName.Text" xml:space="preserve">
+    <value>Contest Name</value>
+    <comment>Label for the contest name input</comment>
+  </data>
+  <data name="ContestInfoPage_lblEndDate.Text" xml:space="preserve">
+    <value>End Date</value>
+    <comment>Label for the end date input</comment>
+  </data>
+  <data name="ContestInfoPage_lblNumberOfFlyoffRounds.Text" xml:space="preserve">
+    <value>Number of flyoff rounds</value>
+    <comment>Label for the Number of flyoff rounds input</comment>
+  </data>
+  <data name="ContestInfoPage_lblStartDate.Text" xml:space="preserve">
+    <value>Start Date</value>
+    <comment>Label for the start date input</comment>
+  </data>
+  <data name="ContestInfoPage_lblSuggestedNumberOfPilots.Text" xml:space="preserve">
+    <value>Suggested number of pilots per group</value>
+    <comment>Label for the suggested number of pilots per ground input</comment>
+  </data>
+  <data name="ContestInfoPage_PageHeader.Text" xml:space="preserve">
+    <value>Basic Contest Info</value>
+    <comment>This is displayed at the top of the page</comment>
+  </data>
+  <data name="ContestPilotsPage_btnAddPilot.Text" xml:space="preserve">
+    <value>Add Pilot</value>
+    <comment>Button text to add a new pilot</comment>
+  </data>
+  <data name="ContestPilotsPage_btnNext.Text" xml:space="preserve">
+    <value>Next</value>
+    <comment>Button that saves and moves the user to ne next page</comment>
+  </data>
+  <data name="ContestPilotsPage_Header.Text" xml:space="preserve">
+    <value>Add pilots to contest</value>
+    <comment>This is displayed at the top of the page</comment>
+  </data>
+  <data name="ContestPilotsPage_lblPilotsListHeader.Text" xml:space="preserve">
+    <value>Available Pilots</value>
+    <comment>The title introducing the list of available pilots</comment>
+  </data>
+  <data name="ContestTaskPage_btnSaveAndGoToNextPage.Text" xml:space="preserve">
+    <value>Save and continue</value>
+    <comment>Button text for the save and go to next page.</comment>
+  </data>
+  <data name="ContestTaskPage_Header.Text" xml:space="preserve">
+    <value>Select tasks for each round</value>
+    <comment>This is displayed at the top of the page</comment>
+  </data>
+  <data name="Hamburger_BtnCreateContest.Text" xml:space="preserve">
+    <value>Create</value>
+    <comment>Text for the create contest menu item</comment>
+  </data>
+  <data name="Hamburger_BtnEditContest.Text" xml:space="preserve">
+    <value>Edit </value>
+    <comment>Text for the edit contest menu item</comment>
+  </data>
+  <data name="Hamburger_BtnHostContest.Text" xml:space="preserve">
+    <value>Host</value>
+    <comment>Text for the host contest menu item</comment>
+  </data>
+  <data name="Hamburger_BtnStartContest.Text" xml:space="preserve">
+    <value>Start</value>
+    <comment>Text for the start contest menu item</comment>
+  </data>
+  <data name="OpenExistingContest_PageHeader.Text" xml:space="preserve">
+    <value>Open Contest</value>
+    <comment>Page header for the open exiting contest page</comment>
+  </data>
+  <data name="OpenExistingContestPage_OpenButton.Content" xml:space="preserve">
+    <value>Open</value>
+    <comment>Text for button that will open a contest</comment>
+  </data>
+  <data name="ContestTaskPage_lblListItemRound.Text" xml:space="preserve">
+    <value>Round -</value>
+    <comment>Text for the list item displaying a round in the contest</comment>
+  </data>
+  <data name="ContestTaskPage_lblListItemTaskDescription.Text" xml:space="preserve">
+    <value>Description -</value>
+    <comment>Text for the list item displaying a round in the contest - Description of the Task</comment>
+  </data>
+  <data name="ContestTaskPage_lblListItemTaskName.Text" xml:space="preserve">
+    <value>Name -</value>
+    <comment>Text for the list item displaying a round in the contest - Name of the Task</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_btnAddPilot.Text" xml:space="preserve">
+    <value>Add Pilot</value>
+    <comment>Button text for adding a new pilot to the registration</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_btnCompleteRegistration.Text" xml:space="preserve">
+    <value>Complete Registration</value>
+    <comment>Button text for completing the pilot registration task</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_Header.Text" xml:space="preserve">
+    <value>Pilot Registration</value>
+    <comment>Test for the pilot registration page header</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_lblPilotsList.Text" xml:space="preserve">
+    <value>Pilots</value>
+    <comment>Label for the pilots list</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_btnCancelChanges.Text" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>label for the cancel button</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_btnSaveAndContinue.Text" xml:space="preserve">
+    <value>Save and Return</value>
+    <comment>label for the save button</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_Header.Text" xml:space="preserve">
+    <value>Edit Pilot Registration</value>
+    <comment>Page header for the edit pilot registration page</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_lblAirframeName.Text" xml:space="preserve">
+    <value>Airframe</value>
+    <comment>label for the airframe the pilot is flying input</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_lblAmaNumber.Text" xml:space="preserve">
+    <value>AMA Registration Number</value>
+    <comment>label for the AMA number</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_lblFirstName.Text" xml:space="preserve">
+    <value>First Name</value>
+    <comment>label for the first name input</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_lblIsAirframeRegistered.Text" xml:space="preserve">
+    <value>All airframes passed inspection?</value>
+    <comment>label for the IsAirframeRegistered input</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_lblIsPaid.Text" xml:space="preserve">
+    <value>Registration Paid?</value>
+    <comment>label for the IsPaid input</comment>
+  </data>
+  <data name="RunContest_EditPilotRegistrationPage_lblLastName.Text" xml:space="preserve">
+    <value>Last Name</value>
+    <comment>label for the last name input</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_AirframesSignedOffToggle_Off.Text" xml:space="preserve">
+    <value>No</value>
+    <comment>Toggle label for "Airframes Signed Off" (No)</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_AirframesSignedOffToggle_On.Text" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Toggle label for "Airframes Signed Off" (Yes)</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_RegistrationPaidToggle_Off.Text" xml:space="preserve">
+    <value>No</value>
+    <comment>Toggle label for "Registration Paid" (No)</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_RegistrationPaidToggle_On.Text" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Toggle label for "Registration Paid" (Yes)</comment>
+  </data>
+  <data name="RunContest_FlightMatrixPage_ContinueBtn.Text" xml:space="preserve">
+    <value>Continue</value>
+    <comment>labled for the Continue to next step button</comment>
+  </data>
+  <data name="RunContest_FlightMatrixPage_Description.Text" xml:space="preserve">
+    <value>Now we need to set up the flight matrix based on the sorting algorhythm that was set up with the contest.  Once the matrix has been generated, either for the entire contest or for the first round depending on the method selected, you will not be able to regenerate the matrix.  At that point you will be able to print it out and carry on with the contest.  Before generating the matrix, you may choose to generate alternates as well.  This is handy if you are using a matrix generation method that will generate a matrix for the entire contest.  This will allow you to handle "walk-on's".  If someone shows up late, assign them to an alternate.  When you select the option to create alternates, select the number you would like to create.  If the number is less than the number of groups, additional entries will be created to "balance" the matrix. </value>
+    <comment>Description of the flight matrix page functionality.</comment>
+  </data>
+  <data name="RunContest_FlightMatrixPage_GenerateBtn.Text" xml:space="preserve">
+    <value>Generate Flight Matrix</value>
+    <comment>Button text to generate the flight matrix</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_Header.Text" xml:space="preserve">
+    <value>Contest Rounds</value>
+    <comment>Page header for the main contest rounds page...dumb name...</comment>
+  </data>
+  <data name="ContestInfoPage_lblContestRegistrationFee.Text" xml:space="preserve">
+    <value>Registration Fee</value>
+    <comment>Label for the Registration Fee for the contest</comment>
+  </data>
+  <data name="OpenExistingContestPage_ListBoxHeaderSelectContest.Text" xml:space="preserve">
+    <value>Select an item to open:</value>
+    <comment>Text for the selection box</comment>
+  </data>
+  <data name="HostContestConnectionPage_lblConnectedTo.Text" xml:space="preserve">
+    <value>Connected to:</value>
+    <comment>label for the text area showing the host that you are currently connected to.</comment>
+  </data>
+  <data name="HostContestConnectionPage_PageHeader.Text" xml:space="preserve">
+    <value>Host a contest on CDP-Connect enabled server</value>
+    <comment>Text for the Host connection page header</comment>
+  </data>
+  <data name="ContestPilotsPage_lblAvailablePilots.Text" xml:space="preserve">
+    <value>Available Pilots</value>
+    <comment>Header for the Available Pilots</comment>
+  </data>
+  <data name="ContestPilotsPage_lblSelectedContestPilots.Text" xml:space="preserve">
+    <value>Selected Contest Pilots </value>
+    <comment>Header for the Selected Pilots</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnScoreFlightGroup.Content" xml:space="preserve">
+    <value>Score Flight Group</value>
+    <comment>Button text for the button under each flight group on the rounds page that allows the user to score a round</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnStartRoundClock.Text" xml:space="preserve">
+    <value>Start Round</value>
+    <comment>Button text for the button that starts the round clock</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnFlightMatrix.Content" xml:space="preserve">
+    <value>Flight Matrix</value>
+    <comment>Button that opens the flight matrix</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnNextRound.Content" xml:space="preserve">
+    <value>&gt;</value>
+    <comment>Button that moves the UI to the next round</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnPreviousRound.Content" xml:space="preserve">
+    <value>&lt;</value>
+    <comment>Button that moves the UI to the previous round</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnStopClock.Content" xml:space="preserve">
+    <value>Stop Clock</value>
+    <comment>Button text for the button that stops the clock</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnViewTotals.Content" xml:space="preserve">
+    <value>View Totals</value>
+    <comment>Button that shows you the current contest totals</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_lblCurrentTask.Text" xml:space="preserve">
+    <value>Task:</value>
+    <comment>Label for the current task</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_lblFlightGroup.Text" xml:space="preserve">
+    <value>Flight Group:</value>
+    <comment>Label for the Flight Group description </comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_lblRoundDescription.Text" xml:space="preserve">
+    <value>Round:</value>
+    <comment>Text that sits between the back and forward button.  Describes the round you are in</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_lblTimeRemaining.Text" xml:space="preserve">
+    <value>Time Remaining:</value>
+    <comment>Label for the time remaining in the window</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_RoundTimer_FlightWindow.Text" xml:space="preserve">
+    <value>Flight Window:</value>
+    <comment>Label text for the flight window</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_RoundTimer_RealTimeScores.Text" xml:space="preserve">
+    <value>Real-Time Scores:</value>
+    <comment>Lable text for the Real time scores</comment>
+  </data>
+  <data name="CreateContest_ContestInfoPage_Header.Text" xml:space="preserve">
+    <value>Set your contest parameters.</value>
+    <comment>Header for the Contest info page</comment>
+  </data>
+  <data name="RunContest_FlightMatrixPage_PageHeader.Text" xml:space="preserve">
+    <value>Generate the Flight Matrix</value>
+    <comment>The header for the flight matrix page</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_AmaNumberColumnHeader.Text" xml:space="preserve">
+    <value>AMA Number</value>
+    <comment>The header for the AMA Number column</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_FirstNameColumnHeader.Text" xml:space="preserve">
+    <value>First Name</value>
+    <comment>The header for the first name column</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_IsPaidColumnHeader.Text" xml:space="preserve">
+    <value>Paid?</value>
+    <comment>The header for the is paid column</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_LastNameColumnHeader.Text" xml:space="preserve">
+    <value>Last Name</value>
+    <comment>The header for the last name column</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_PlaneInspectedColumnHeader.Text" xml:space="preserve">
+    <value>Is Inspected?</value>
+    <comment>The header for the is inspected column</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_ConnectionState.Text" xml:space="preserve">
+    <value>Connected</value>
+    <comment>Label for the connected state</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_RoundTimer_FlightGroup.Text" xml:space="preserve">
+    <value>Flight Group:</value>
+    <comment>Label for the round timer flight group</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_RoundTimer_FlightTask.Text" xml:space="preserve">
+    <value>Flight Task:</value>
+    <comment>Label for the round timer flight task</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnRounds.Content" xml:space="preserve">
+    <value>Back to Rounds</value>
+    <comment>Button text for returning to the rounds view</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnPauseRoundClock.Content" xml:space="preserve">
+    <value>Pause</value>
+    <comment>Text for the pause round button</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnMoveNext.Text" xml:space="preserve">
+    <value>Next Flight Group</value>
+    <comment>Label for the move to next flight group button</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_RoundTimer_SubmittedTimeSheets.Text" xml:space="preserve">
+    <value>Submitted Time Sheets:</value>
+    <comment>Label for the submitted time sheets header section of the round timer</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_btnResumeRoundClock.Text" xml:space="preserve">
+    <value>Resume</value>
+    <comment>Label for the resume clock button</comment>
+  </data>
+  <data name="CreateContest_ContestInfoPage_TypeOfContest.Text" xml:space="preserve">
+    <value>What type of Contest is this?</value>
+    <comment>Label for the type of contest you are creating</comment>
+  </data>
+  <data name="CreateContest_ContestInfoPage_TypeOfRoundSorting.Text" xml:space="preserve">
+    <value>Select how the pilots should be sorted</value>
+    <comment>Label for how the rounds should be sorted</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_MarkForRemovalColumnHeader.Text" xml:space="preserve">
+    <value>Mark for Removal</value>
+    <comment>Column header for the Remove pilot toggle</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_MarkForRemovalToggle.Text" xml:space="preserve">
+    <value>Remove</value>
+    <comment>Toggle label for the remove toggle (Remove)</comment>
+  </data>
+  <data name="AddPilotPage_btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>The label for the cancel button on the add pilot page</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_CountColumnHeader.Text" xml:space="preserve">
+    <value>Count</value>
+    <comment>The column header for the pilot count on the pilot registration page</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_MarkForEditColumnHeader.Text" xml:space="preserve">
+    <value>Edit Pilot Information</value>
+    <comment>The column header for the edit action on the pilot registration page</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_MarkForEditToggle.Text" xml:space="preserve">
+    <value>Edit</value>
+    <comment>The label for the Edit toggle button the pilot registration page</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_MoneyCollected.Text" xml:space="preserve">
+    <value>Monies Collected: $</value>
+    <comment>The label for the amount of money that should be collected</comment>
+  </data>
+  <data name="RunContest_PilotRegistrationPage_PilotCount.Text" xml:space="preserve">
+    <value>Pilot count:</value>
+    <comment>The label for the count of pilots registered in contest</comment>
+  </data>
+  <data name="CreateContest_ContestInfoPage_AllowDroppedRound_Off.Text" xml:space="preserve">
+    <value>No</value>
+    <comment>Toggle label for the "Allow Dropped Round" Toggle (No)</comment>
+  </data>
+  <data name="CreateContest_ContestInfoPage_AllowDroppedRound_On.Text" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Toggle label for the "Allow Dropped Round" Toggle (Yes)</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_FlightGroup_EntryErrors.Text" xml:space="preserve">
+    <value>Errors</value>
+    <comment>Header for the flight group boxes, Error</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_FlightGroup_FlightScores.Text" xml:space="preserve">
+    <value>Flight Scores</value>
+    <comment>Header for the flight group boxes, flight scores</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_FlightGroup_Penalty.Text" xml:space="preserve">
+    <value>Penalty</value>
+    <comment>Header for the flight group boxes, penalty</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_FlightGroup_PilotName.Text" xml:space="preserve">
+    <value>Pilot Name</value>
+    <comment>Header for the flight group boxes, pilot name</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_FlightGroup_Total.Text" xml:space="preserve">
+    <value>Total</value>
+    <comment>Header for the flight group boxes, Total</comment>
+  </data>
+  <data name="RunContest_ContestRoundsPage_HostUrl.Text" xml:space="preserve">
+    <value>Host URL:</value>
+    <comment>Label for the host url entry box</comment>
+  </data>
+  <data name="CreateContest_ContestTasksPage_AvailableTasksHeader.Text" xml:space="preserve">
+    <value>Available Tasks</value>
+    <comment>Header for the available tasks list</comment>
+  </data>
+  <data name="CreateContest_ContestTasksPage_SelectTasks.Text" xml:space="preserve">
+    <value>Selected Tasks</value>
+    <comment>Header for the selected Tasks list</comment>
+  </data>
+  <data name="CreateContest_FlyOffTasksSelectionPage_AvailableTasksHeader.Text" xml:space="preserve">
+    <value>Available Tasks</value>
+    <comment>Header for the available tasks list</comment>
+  </data>
+  <data name="CreateContest_FlyOffTasksSelectionPage_btnSaveAndGoToNextPage.Text" xml:space="preserve">
+    <value>Complete</value>
+    <comment>Button label for Completing the workflow</comment>
+  </data>
+  <data name="CreateContest_FlyOffTasksSelectionPage_Header.Text" xml:space="preserve">
+    <value>Select tasks for each fly-off round</value>
+    <comment>Header for the page</comment>
+  </data>
+  <data name="CreateContest_FlyOffTasksSelectionPage_lblListItemRound.Text" xml:space="preserve">
+    <value>Round -</value>
+    <comment>Label for the rounds list item - round</comment>
+  </data>
+  <data name="CreateContest_FlyOffTasksSelectionPage_lblListItemTaskDescription.Text" xml:space="preserve">
+    <value>Description -</value>
+    <comment>Label for the rounds list item - description</comment>
+  </data>
+  <data name="CreateContest_FlyOffTasksSelectionPage_lblListItemTaskName.Text" xml:space="preserve">
+    <value>Name -</value>
+    <comment>Label for the rounds list item - Task Name</comment>
+  </data>
+  <data name="CreateContest_FlyOffTasksSelectionPage_SelectTasks.Text" xml:space="preserve">
+    <value>Selected Tasks</value>
+    <comment>Header for the selected Tasks list</comment>
+  </data>
+  <data name="ContestInfoPage_lblFlyOffSelectionAlgo.Text" xml:space="preserve">
+    <value>Method to select fly-off pilots</value>
+    <comment>Label for the fly-off selection algo</comment>
+  </data>
+</root>

@@ -1,0 +1,12 @@
+<template>
+    <require from="../../features/header/header.html"></require>
+    <require from="./app.css"></require>
+    <div class="container-fluid">
+        <header router.bind="router"></header>
+        <div class="row">
+            <div class="col-sm-9 body-content">
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+</template>
