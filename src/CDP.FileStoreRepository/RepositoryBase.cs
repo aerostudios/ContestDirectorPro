@@ -187,16 +187,16 @@ namespace CDP.ContestHost.FileStoreRepository
                 await SyncLock.WaitAsync();
 
                 string json = JsonConvert.SerializeObject(itemToSave);
-                if (File.Exists(storageFileName))
+                if (File.Exists(this.storageFileName))
                 {
-                    using (var fileStream = new FileStream(storageFileName, FileMode.OpenOrCreate))
+                    using (var fileStream = new FileStream(this.storageFileName, FileMode.OpenOrCreate))
                     {
                         fileStream.SetLength(0);
                         fileStream.Close();
                     };
                 }
 
-                using (var fileStream = new FileStream(storageFileName, FileMode.OpenOrCreate))
+                using (var fileStream = new FileStream(this.storageFileName, FileMode.OpenOrCreate))
                 {
                     var size = fileStream.Length;
                     if (json.Length < size)

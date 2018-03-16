@@ -25,7 +25,7 @@ namespace CDP.ContestHost.Site.Controllers.Api
         /// <param name="flightMatrixStorageCmdInteractor">The flight matrix storage command interactor.</param>
         /// <param name="flightMatrixQueryInteractor">The flight matrix query interactor.</param>
         public FlightMatrixController(FlightMatrixStorageCmdInteractor flightMatrixStorageCmdInteractor, 
-            FlightMatrixQueryInteractor flightMatrixQueryInteracto)
+            FlightMatrixQueryInteractor flightMatrixQueryInteractor)
         {
             this.flightMatrixStorageCmdInteractor = flightMatrixStorageCmdInteractor;
             this.flightMatrixQueryInteractor = flightMatrixQueryInteractor;
@@ -54,9 +54,9 @@ namespace CDP.ContestHost.Site.Controllers.Api
         /// <param name="contestId">The contest identifier.</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetFlightMatrixForContest(string contestId)
+        public async Task<IActionResult> GetFlightMatrixForContest(string id)
         {
-            var pilotViewResult = await this.flightMatrixQueryInteractor.GetPilotSortedFlightMatrix(contestId);
+            var pilotViewResult = await this.flightMatrixQueryInteractor.GetPilotSortedFlightMatrix(id);
             if (pilotViewResult.IsFaulted)
             {
                 return BadRequest(pilotViewResult.Error.ErrorMessage);

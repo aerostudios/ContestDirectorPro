@@ -19,8 +19,10 @@ using CDP.ScoringAndSortingImpl.F3K.Sorting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.IO;
@@ -99,13 +101,21 @@ namespace CDP.ContestHost.Site
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseCors("AllowCors");
-            app.UseStaticFiles();
+
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings[".cdp"] = "application/json";
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+                ContentTypeProvider = provider
+            });
+
             app.UseSignalR(router => router.MapHub<ContestScoringHub>("scoring"));
 
             if (env.IsDevelopment())
             {
                 loggerFactory.AddConsole();
-                app.UseDeveloperExceptionPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     HotModuleReplacement = true
@@ -115,6 +125,8 @@ namespace CDP.ContestHost.Site
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseDeveloperExceptionPage();
 
             app.UseMvc(routes =>
             {

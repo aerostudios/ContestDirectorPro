@@ -54,7 +54,7 @@ namespace CDP.CoreApp.Features.Contests.Commands
 
                 if (result.IsFaulted || result.Value == null)
                 {
-                    return Error<Contest>(null, "An error occured while creating a contest.");
+                    return Error<Contest>(null, result.Error.Exception);
                 }
 
                 return Success(result.Value, nameof(CreateContestAsync));

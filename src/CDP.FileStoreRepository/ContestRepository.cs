@@ -62,9 +62,6 @@ namespace CDP.ContestHost.FileStoreRepository
                 return Error<Contest>(null, new Exception("A contest with this name already exists."));
             }
 
-            // Assign a new GUID for the ID
-            contestToCreate.Id = base.GenerateId();
-
             allContests.Add(contestToCreate);
 
             try
