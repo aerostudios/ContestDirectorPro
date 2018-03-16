@@ -603,6 +603,7 @@ namespace CDP.UWP.Features.Workflows.RunContest
                 App.ContestEngine.GetNextTimeWindow();
                 this.IsRoundInProgressButtonGroupVisible = false;
                 this.IsStartRoundButtonVisible = true;
+                this.IsMoveNextButtonVisible = false;
             });
         }
 
