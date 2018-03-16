@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{A50C9702-260D-44B3-BB6B-7578409863C3}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CDP.UWP</RootNamespace>
+    <AssemblyName>CDP.UWP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <PackageCertificateKeyFile>CDP.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\BusyIndicator\Busy.xaml.cs">
+      <DependentUpon>Busy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Clock\TaskClockConfig.cs" />
+    <Compile Include="Components\CommunicationHub\ContestMediator\ContestMediator.cs" />
+    <Compile Include="Components\ExternalClockProxy\SassBluetoothClockProxy.cs" />
+    <Compile Include="Components\Speech\WindowsVoiceBox.cs" />
+    <Compile Include="Config\ContestHostApis.cs" />
+    <Compile Include="Config\StorageFileConfig.cs" />
+    <Compile Include="Converters\BooleanConverter.cs" />
+    <Compile Include="Converters\BooleanSolidColorBrushConverter.cs" />
+    <Compile Include="Converters\IndexConverter.cs" />
+    <Compile Include="Components\CommunicationHub\ContestMediator\Events\SignalRConnectionStateChangedEventArgs.cs" />
+    <Compile Include="Components\CommunicationHub\ContestMediator\SignalRConnectionState.cs" />
+    <Compile Include="Features\CoverPage\CoverPage.xaml.cs">
+      <DependentUpon>CoverPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\CoverPage\CoverPageViewModel.cs" />
+    <Compile Include="Features\OpenExistingContestPage\OpenExistingContestPage.xaml.cs">
+      <DependentUpon>OpenExistingContestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\OpenExistingContestPage\OpenExistingContestPageViewModel.cs" />
+    <Compile Include="Features\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Settings\SettingsPageViewModel.cs" />
+    <Compile Include="Features\Shell\Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\CreateContest\AddPilotViewModel.cs" />
+    <Compile Include="Features\Workflows\CreateContest\AdditionalViewModels\ContestRoundListItemViewModel.cs" />
+    <Compile Include="Features\Workflows\CreateContest\AdditionalViewModels\PilotListItemViewModel.cs" />
+    <Compile Include="Features\Workflows\CreateContest\AddPilotPage.xaml.cs">
+      <DependentUpon>AddPilotPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\CreateContest\ContestInfoPage.xaml.cs">
+      <DependentUpon>ContestInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\CreateContest\ContestInfoViewModel.cs" />
+    <Compile Include="Features\Workflows\CreateContest\ContestPilotsPage.xaml.cs">
+      <DependentUpon>ContestPilotsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\CreateContest\ContestPilotsPageViewModel.cs" />
+    <Compile Include="Features\Workflows\CreateContest\ContestTasksPage.xaml.cs">
+      <DependentUpon>ContestTasksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\CreateContest\ContestTasksPageViewModel.cs" />
+    <Compile Include="Features\Workflows\CreateContest\FlyOffsTaskSelectionPage.xaml.cs">
+      <DependentUpon>FlyOffsTaskSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\CreateContest\FlyOffsTaskSelectionViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\ContestRoundViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\FinalRoundScoreViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\FlightGroupViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\LiveScoreViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\PilotContestScoreViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\PilotRegistrationListViewItemViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\PilotRoundMatrixListItemViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\PilotScoreViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\SubmittedScoreViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\AdditionalViewModels\TimeGateViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\ContestRoundsPage.xaml.cs">
+      <DependentUpon>ContestRoundsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\RunContest\ContestRoundsPageViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\EditPilotRegistrationPage.xaml.cs">
+      <DependentUpon>EditPilotRegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\RunContest\EditPilotRegistrationPageViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\FlightMatrixPage.xaml.cs">
+      <DependentUpon>FlightMatrixPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\RunContest\FlightMatrixPageViewModel.cs" />
+    <Compile Include="Features\Workflows\RunContest\PilotRegistrationPage.xaml.cs">
+      <DependentUpon>PilotRegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Workflows\RunContest\PilotRegistrationPageViewModel.cs" />
+    <Compile Include="Helpers\AddPilotParameters.cs" />
+    <Compile Include="Helpers\ContestOpenParameters.cs" />
+    <Compile Include="Models\CdproViewModelBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SettingsServices\SettingsService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="CDP.UWP_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\CDPLogo.png" />
+    <Content Include="Assets\CDProLogo_HackSmall.png" />
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\Sectional.PNG" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Features\Workflows\EditContest\Readme.txt" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Components\BusyIndicator\Busy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\CoverPage\CoverPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\OpenExistingContestPage\OpenExistingContestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Settings\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Shell\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\CreateContest\AddPilotPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\CreateContest\ContestInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\CreateContest\ContestPilotsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\CreateContest\ContestTasksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\CreateContest\FlyOffsTaskSelectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\RunContest\ContestRoundsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\RunContest\EditPilotRegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\RunContest\FlightMatrixPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Workflows\RunContest\PilotRegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Custom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
+      <Version>1.0.0-alpha2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Template10">
+      <Version>1.1.12</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CDP.AppDomain\CDP.AppDomain.csproj">
+      <Project>{b7878f4a-a6b5-44ee-a3d2-f965d518ff61}</Project>
+      <Name>CDP.AppDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDP.Common\CDP.Common.csproj">
+      <Project>{B2C224C7-3161-4A0D-86AE-8753109CEC16}</Project>
+      <Name>CDP.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDP.CoreApp.Interfaces\CDP.CoreApp.Interfaces.csproj">
+      <Project>{59753db8-42b3-4b1a-b47c-3800c6c86df1}</Project>
+      <Name>CDP.CoreApp.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDP.CoreApp\CDP.CoreApp.csproj">
+      <Project>{94e9c03e-0e44-4d52-bfba-f893b2167998}</Project>
+      <Name>CDP.CoreApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDP.Repository.WindowsStorage\CDP.Repository.WindowsStorage.csproj">
+      <Project>{54b03116-7eef-48d3-8783-05872c0c94e0}</Project>
+      <Name>CDP.Repository.WindowsStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CDP.ScoringAndSortingImpl.F3K\CDP.ScoringAndSortingImpl.F3K.csproj">
+      <Project>{DF675FDD-2BCB-4B38-A989-4C84707E7A9B}</Project>
+      <Name>CDP.ScoringAndSortingImpl.F3K</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\Workflows\HostContest\" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

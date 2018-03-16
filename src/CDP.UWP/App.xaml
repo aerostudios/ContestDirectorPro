@@ -1,0 +1,24 @@
+﻿<common:BootStrapper x:Class="CDP.UWP.App"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:common="using:Template10.Common"
+                     xmlns:controls="using:Template10.Controls">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries> 
+                <ResourceDictionary Source="Styles\Custom.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--  custom resources go here  -->
+            
+            <Style TargetType="controls:CustomTitleBar">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="ForegroundColor" Value="{ThemeResource PrimaryFontColor}" />
+                <Setter Property="ButtonBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <!-- #094cab -->
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</common:BootStrapper>

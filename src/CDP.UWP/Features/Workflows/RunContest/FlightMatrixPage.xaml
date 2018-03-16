@@ -1,0 +1,115 @@
+﻿<Page
+    x:Class="CDP.UWP.Features.Workflows.RunContest.FlightMatrixPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:CDP.UWP.Features.Workflows.RunContest"
+    xmlns:controls="using:Template10.Controls"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:FlightMatrixPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <RelativePanel Background="{ThemeResource PrimaryColorBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <controls:PageHeader x:Name="pageHeader"
+                             Background="{ThemeResource PrimaryColorBrush}"
+                             Foreground="{ThemeResource PrimaryFontColorBrush}"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True"
+                             x:Uid="RunContest_FlightMatrixPage_PageHeader" />
+
+        <RelativePanel EntranceNavigationTransitionInfo.IsTargetElement="True"
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.Below="pageHeader"
+                       BorderThickness="{StaticResource PanelFrameBorderWidth}"
+                       BorderBrush="{ThemeResource LightBorderBrush}">
+
+            <ScrollViewer Padding="20" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock x:Uid="RunContest_FlightMatrixPage_Description" 
+                               TextWrapping="WrapWholeWords"
+                               Padding="0,20,0,20"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Click="GenerateMatrix_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Refresh"/>
+                                <TextBlock Padding="10,0,0,0" VerticalAlignment="Center" x:Uid="RunContest_FlightMatrixPage_GenerateBtn"/>
+                            </StackPanel>
+                        </Button>
+                        <Rectangle Width="20"/>
+                        <Button Click="SaveAndContinue_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Accept"/>
+                                <TextBlock Padding="10,0,0,0" VerticalAlignment="Center" x:Uid="RunContest_FlightMatrixPage_ContinueBtn"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <Rectangle Height="20"/>
+                    <ListView Grid.Column="0" ItemsSource="{x:Bind ViewModel.Pilots}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="{ThemeResource TernaryColorBrush}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Padding="20,0,0,0" Foreground="{ThemeResource PrimaryFontColorBrush}" Text="{Binding PilotName}" VerticalAlignment="Center"/>
+                                    <GridView Grid.Column="1" ItemsSource="{Binding FlightGroups, Mode=OneTime}" 
+                                            ScrollViewer.HorizontalScrollMode="Enabled"
+                                            ScrollViewer.IsHorizontalRailEnabled="True"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                            VerticalAlignment="Center"
+                                            SelectionMode="None">
+                                        <GridView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel VerticalAlignment="Center">
+                                                    <TextBlock Foreground="{ThemeResource PrimaryFontColorBrush}" Text="{Binding}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridView.ItemTemplate>
+                                    </GridView>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
+        </RelativePanel>
+
+    </RelativePanel>
+</Page>

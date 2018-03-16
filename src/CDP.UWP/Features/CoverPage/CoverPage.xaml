@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="CDP.UWP.Features.CoverPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:CDP.UWP.Features"
+    xmlns:controls="using:Template10.Controls"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:CoverPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource PrimaryColorBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--  header  -->
+
+        <controls:PageHeader Background="{ThemeResource PrimaryColorBrush}"
+                             Foreground="{ThemeResource PrimaryFontColorBrush}"
+                             Frame="{x:Bind Frame}" Content="" />
+
+        <!--  #region content  -->
+
+        <Grid Grid.Row="1" BorderThickness="{StaticResource PanelFrameBorderWidth}"
+                       BorderBrush="{ThemeResource LightBorderBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="1" VerticalAlignment="Bottom" Source="..\..\Assets\CDPLogo.png" Height="150"/>
+            <TextBlock Grid.Row="2" VerticalAlignment="Top" FontSize="16" Text="Contest Director Pro" Foreground="{ThemeResource PrimaryFontColorBrush}" HorizontalAlignment="Center" Padding="0,20,0,0"></TextBlock>
+
+        </Grid>
+
+        <!--  #endregion  -->
+
+    </Grid>
+</Page>

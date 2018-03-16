@@ -1,0 +1,1 @@
+﻿The Edit workflow is handled by the "Create Contest workflow".  It uses the open existing contest dialog / page to preload / inject a contest into the contest creation workflow.  Any changes in that workflow are saved.  
