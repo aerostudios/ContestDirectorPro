@@ -1,7 +1,7 @@
 # Contest Director Pro
 <img src="Documentation/Images/CDPLogo.png" data-canonical-src="Documentation/Images/CDPLogo.png" width="200" />
 
-[Requirements](/Documentation/requirements.md)
+[Requirements](https://github.com/aerostudios/ContestDirectorPro/blob/master/Documentation/Requirements.md)
 
 CDPro is a set of software components that enhance the contest management task for R/C glider competitions.  Currently, the software suite contains a UWP application to run the contest and an ASP.NET Core site to 'host' the contests.
 
