@@ -13,6 +13,7 @@ In order to test the UWP application on a machine other than your dev box, you w
 ## Hosting the web application (on a non-dev box)
 
 The web application out of the box will work on any machine with IIS and Websockets installed.  Follow the How-To & Microsoft documentation to set up IIS and websockets.
+
 [IIS Setup](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?tabs=aspnetcore2x#iis-configuration) 
 
 [.NET Core Setup](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?tabs=aspnetcore2x#install-the-net-core-windows-server-hosting-bundle)
