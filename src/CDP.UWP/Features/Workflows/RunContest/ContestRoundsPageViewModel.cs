@@ -513,28 +513,32 @@ namespace CDP.UWP.Features.Workflows.RunContest
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         public void StartRoundClock_Click(object sender, RoutedEventArgs e)
         {
-            // Build the current timing windows
             var currentTask = this.contestRoundsViewModels[App.ContestEngine.CurrentRoundOrdinal].Task;
-
-            // Set up the clock and post event
+            
             this.Dispatcher.DispatchAsync(async () =>
             {
+                // Get the first time window
+                App.ContestEngine.SetTimeWindow();
+
+                // Build the announcement and announce
                 var pilotsInFlightGroup = App.ContestEngine.Contest
                                             .Rounds[App.ContestEngine.CurrentRoundOrdinal].FlightGroups
                                             .Where(fg => fg.Key == App.ContestEngine.CurrentFlightGroup).First().Value;
 
                 var pilotsInFlightGroupAnnouncement = BuildPilotsInFlightGroupAnnouncement(pilotsInFlightGroup);
-
-
                 await this.voiceBox.SayItAsync($"{pilotsInFlightGroupAnnouncement}; {currentTask.Name}; {App.ContestEngine.CurrentTimeWindow.Name}");
+
+                // Set up the UI
                 this.IsStartRoundButtonVisible = false;
                 this.IsRoundInProgressButtonGroupVisible = true;
-                RoundTimerCurrentFlightWindow = App.ContestEngine.CurrentTimeWindow.Name;
+                this.RoundTimerCurrentFlightWindow = App.ContestEngine.CurrentTimeWindow.Name;
                 this.CurrentTime = App.ContestEngine.CurrentTimeWindow.Time.ToString("c");
+
                 await App.ContestCommunicationsHub.PostRoundTimerStarted(App.ContestEngine.CurrentTimeWindow.Time);
                 await App.ContestCommunicationsHub.PostNewRoundAvailable(App.ContestEngine.CurrentFlightGroup, App.ContestEngine.CurrentTask, pilotsInFlightGroup);
             });
 
+            // Start the timer
             App.ContestTimer.Start(App.ContestEngine.CurrentTimeWindow.Time, new TimeSpan(), App.ContestEngine.CurrentTimeWindow.DirectionOfCount, sender as System.ComponentModel.ISynchronizeInvoke);
         }
 
@@ -562,12 +566,15 @@ namespace CDP.UWP.Features.Workflows.RunContest
         public void StopRoundClock_Click(object sender, RoutedEventArgs e)
         {
             App.ContestTimer.Stop();
+
             this.Dispatcher.Dispatch(async () =>
             {
                 this.IsRoundInProgressButtonGroupVisible = false;
                 this.IsStartRoundButtonVisible = true;
-                App.ContestEngine.ResetFlightWindows();
                 this.CurrentTime = "00:00:00";
+
+                App.ContestEngine.ResetFlightWindows();
+
                 await App.ContestCommunicationsHub.PostRoundTimerStopped(App.ContestTimer.CurrentTime);
             });
         }
@@ -580,6 +587,7 @@ namespace CDP.UWP.Features.Workflows.RunContest
         public void ContinueRound_Click(object sender, RoutedEventArgs e)
         {
             App.ContestTimer.Start(App.ContestTimer.CurrentTime, new TimeSpan(), App.ContestTimer.Direction);
+
             this.Dispatcher.Dispatch(() =>
             {
                 this.IsStartRoundButtonVisible = false;
@@ -597,10 +605,9 @@ namespace CDP.UWP.Features.Workflows.RunContest
         public void MoveToNextFlightGroup_Click(object sender, RoutedEventArgs e)
         {
             // Set the next flight group
-            this.Dispatcher.Dispatch(() => 
+            this.Dispatcher.Dispatch(() =>
             {
                 this.LiveScoresForCurrentFlightGroupViewModels.Clear();
-                App.ContestEngine.GetNextTimeWindow();
                 this.IsRoundInProgressButtonGroupVisible = false;
                 this.IsStartRoundButtonVisible = true;
                 this.IsMoveNextButtonVisible = false;
@@ -686,8 +693,9 @@ namespace CDP.UWP.Features.Workflows.RunContest
         private void ContestTimer_ClockEnd(object sender, EventArgs e)
         {
             this.Dispatcher.DispatchAsync(() => this.CurrentTime = "00:00:00");
+            App.ContestEngine.SetTimeWindow();
 
-            if (App.ContestEngine.GetNextTimeWindow() != null)
+            if (App.ContestEngine.CurrentTimeWindow != null)
             {
                 this.Dispatcher.DispatchAsync(async () =>
                 {
@@ -1209,8 +1217,10 @@ namespace CDP.UWP.Features.Workflows.RunContest
                     continue;
                 }
 
-                var scoreToDrop = scores.Min();
-                pilotScores.Value.Scores.Where(s => s.Value.RoundOrdinal == scoreToDrop.Value.RoundOrdinal).Single().Value.IsDropped = true;
+                var scoreToDrop = scores.Min(s => s.Value.Score);
+                var viewModelWithLowestScore = scores.Where(s => s.Value.Score == scoreToDrop).First();
+
+                pilotScores.Value.Scores.Where(s => s.Value.RoundOrdinal == viewModelWithLowestScore.Value.RoundOrdinal).Single().Value.IsDropped = true;
             }
         }
 

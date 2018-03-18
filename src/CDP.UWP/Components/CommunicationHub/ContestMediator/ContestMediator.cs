@@ -161,10 +161,13 @@ namespace CDP.UWP.Components.ContestMediator
                     {
                         // Send the contest data to the server to store
                         webClient.BaseAddress = serverUrl;
+
                         var content = JsonConvert.SerializeObject(App.ContestEngine.Contest);
                         var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
                         byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
                         var response = await webClient.PostAsync($"{serverUrl.AbsoluteUri}{ContestHostApis.ContestsRoute}", byteContent);
+
                         if (response.StatusCode != HttpStatusCode.OK)
                         {
                             logger.LogTrace("bad stuff man.");
@@ -174,7 +177,9 @@ namespace CDP.UWP.Components.ContestMediator
                         var flightMatrix = JsonConvert.SerializeObject(App.ContestEngine.FlightMatrix);
                         byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(flightMatrix));
                         byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
                         response = await webClient.PostAsync($"{serverUrl.AbsoluteUri}{ContestHostApis.FlightMatrixRoute}", byteContent);
+
                         if (response.StatusCode != HttpStatusCode.OK)
                         {
                             logger.LogTrace("bad stuff man.");
@@ -197,6 +202,7 @@ namespace CDP.UWP.Components.ContestMediator
         {
             SignalRConnectionStateChanged?.Invoke(this, new SignalRConnectionStateChangedEventArgs(SignalRConnectionState.Disconnected));
             await this.hubConnection.DisposeAsync();
+
             this.logger.LogTrace("SignalR connection to host server has closed." + ex?.Message);
         }
 
@@ -251,6 +257,7 @@ namespace CDP.UWP.Components.ContestMediator
         {
             var args = new RoundTimerEventArgs(currentClockTime);
             RoundTimerStarted?.Invoke(this, args);
+
             try
             {
                 if (this.hubConnection != null) await this.hubConnection.InvokeAsync<RoundTimerEventArgs>("RoundTimerStarted", args);
@@ -270,6 +277,7 @@ namespace CDP.UWP.Components.ContestMediator
         {
             var args = new RoundTimerEventArgs(currentClockTime);
             RoundTimerStopped?.Invoke(this, args);
+
             try
             {
                 if (this.hubConnection != null) await this.hubConnection.InvokeAsync<object>("RoundTimerStopped", args);
@@ -288,6 +296,7 @@ namespace CDP.UWP.Components.ContestMediator
         internal async Task PostRoundTimerCurrentTime(TimeSpan currentClockTime)
         {
             RoundTimerClockPing?.Invoke(this, new RoundTimerEventArgs(currentClockTime));
+
             try
             {
                 if (this.hubConnection != null) await this.hubConnection.InvokeAsync<object>("RoundTimerCurrentTime", currentClockTime);
@@ -306,6 +315,7 @@ namespace CDP.UWP.Components.ContestMediator
         private void HandleFinalTimeSheetPosted(FinalTimeSheetPostedEventArgs args)
         {
             FinalTimeSheetPosted?.Invoke(this, args);
+
             this.logger.LogTrace($"{nameof(ContestMediator)}:{nameof(HandleFinalTimeSheetPosted)} " +
                 $" - Pilot:{args.PilotId}, TimingDeviceId:{args.TimingDeviceId}");
         }
@@ -317,6 +327,7 @@ namespace CDP.UWP.Components.ContestMediator
         private void HandleFlightTimerStarted(FlightTimerEventArgs args)
         {
             this.FlightTimerStarted?.Invoke(this, args);
+
             this.logger.LogTrace($"{nameof(ContestMediator)}:{nameof(HandleFlightTimerStopped)} " +
                 $" - Pilot:{args.PilotId}, TimingDeviceId:{args.TimingDeviceId}, Minutes:{args.Minutes}, Seconds:{args.Seconds}");
         }
@@ -328,6 +339,7 @@ namespace CDP.UWP.Components.ContestMediator
         private void HandleFlightTimerStopped(FlightTimerEventArgs args)
         {
             this.FlightTimerStopped?.Invoke(this, args);
+
             this.logger.LogTrace($"{nameof(ContestMediator)}:{nameof(HandleFlightTimerStopped)} " +
                 $" - Pilot:{args.PilotId}, TimingDeviceId:{args.TimingDeviceId}, Minutes:{args.PilotId}, Seconds:{args.Seconds}");
         }

@@ -42,7 +42,7 @@ namespace CDP.AppDomain.Tasks.F3K
         /// <value>
         /// The name.
         /// </value>
-        public override string Name => "Task A - last flight 5 min max";
+        public override string Name => "Task A - Last flight 5 min max";
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is landing scored.

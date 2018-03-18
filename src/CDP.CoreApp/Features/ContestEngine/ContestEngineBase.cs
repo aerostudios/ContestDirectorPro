@@ -133,7 +133,7 @@ namespace CDP.CoreApp.Features.ContestEngine
         /// Gets the next time window.
         /// </summary>
         /// <returns></returns>
-        public virtual TimeWindow GetNextTimeWindow()
+        public virtual void SetTimeWindow()
         {
             throw new NotImplementedException();
         }
