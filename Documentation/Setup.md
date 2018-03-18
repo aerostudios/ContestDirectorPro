@@ -22,5 +22,5 @@ The web application out of the box will work on any machine with IIS and Websock
 
 When you set up IIS, you will need to create a virtual directory to host the website in order to run the site.  This is partly because of how the site data storage was designed.   If the process running the app pool for the default directory in IIS has write permissions to the folder holding the site code, you don't need to do this.  However, I'm guessing most people do not have this set up or want to do so.  You will need to perform the following tasks to do so. 
 
-+ In IIS create your site, be sure to follow these steps and make sure the directory you are copying the site files to has write access.  [Create the virtual directory](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?tabs=aspnetcore2x#install-web-deploy-when-publishing-with-visual-studio)
++ In IIS create your site, be sure to follow these steps and <b>make sure the directory you are copying the site files to has write access.</b>  [Create the virtual directory](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?tabs=aspnetcore2x#install-web-deploy-when-publishing-with-visual-studio)
 + Copy the deployment bits to the directory you created above
