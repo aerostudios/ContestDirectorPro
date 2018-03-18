@@ -10,7 +10,6 @@ namespace CDP.ScoringAndSortingImpl.F3K.Tests
     using CDP.AppDomain.Scoring;
     using CDP.AppDomain.Tasks;
     using CDP.AppDomain.Tasks.F3K;
-    using CDP.CoreApp.Features.Scoring;
     using CDP.ScoringAndSortingImpl.F3K.Scoring;
     using Moq;
     using System;

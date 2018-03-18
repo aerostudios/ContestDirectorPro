@@ -101,6 +101,15 @@ namespace CDP.CoreApp.Features.ContestEngine
 
             base.PilotsInContest = allPilotsResult.Value.Where(p => this.Contest.PilotRoster.Contains(p.Id)).ToList();
 
+            var flightMatrixResult = await this.flightMatrixQueryIntr.GetFlightMatrixForContest(this.Contest.Id);
+            if (flightMatrixResult.IsFaulted)
+            {
+                this.logger.LogTrace($"{nameof(F3KContestEngine)}:{nameof(Initialize)} - An error occured getting the flight matrix.");
+                return;
+            }
+
+            this.FlightMatrix = flightMatrixResult.Value;
+
             // If this contest has not started, we need to load up the contest rounds with the appropriate pilots 
             // based on the flight matrix that was generated.
             if (!this.Contest.State.HasStarted)
@@ -117,16 +126,7 @@ namespace CDP.CoreApp.Features.ContestEngine
             }
 
             this.CurrentTask = taskResult.Value;
-
-            var flightMatrixResult = await this.flightMatrixQueryIntr.GetFlightMatrixForContest(this.Contest.Id);
-            if (flightMatrixResult.IsFaulted)
-            {
-                this.logger.LogTrace($"{nameof(F3KContestEngine)}:{nameof(Initialize)} - An error occured getting the flight matrix.");
-                return;
-            }
-
-            this.FlightMatrix = flightMatrixResult.Value;
-
+            
             // Initialize the flight groups
             InitializeFlightGroupQueue(this.Contest.Rounds[this.CurrentRoundOrdinal], this.CurrentFlightGroup);
             ResetFlightWindows();
@@ -463,14 +463,15 @@ namespace CDP.CoreApp.Features.ContestEngine
         private Queue<TimeWindow> InitializeTimeWindowsQueue(TaskBase task)
         {
             var returnVal = new Queue<TimeWindow>();
-            //Practice Window
+
+            //Practice Window (3 minutes)
             returnVal.Enqueue(new TimeWindow
             {
                 Name = "Flight Test Window",
                 GateType = TimeGateType.Practice,
                 DirectionOfCount = TimerDirection.CountDown,
                 CountDownLast10Seconds = true,
-                Time = new TimeSpan(0, 0, 10)
+                Time = new TimeSpan(0, 3, 0)
             });
 
             //Task Window (build from the task object)
@@ -500,14 +501,14 @@ namespace CDP.CoreApp.Features.ContestEngine
                 });
             }
 
-            //Landing Window
+            //Landing Window (30 seconds)
             returnVal.Enqueue(new TimeWindow
             {
                 Name = "Landing Window",
                 GateType = TimeGateType.Landing,
                 DirectionOfCount = TimerDirection.CountDown,
                 CountDownLast10Seconds = true,
-                Time = new TimeSpan(0, 0, 10)
+                Time = new TimeSpan(0, 0, 30)
             });
 
             return returnVal;
