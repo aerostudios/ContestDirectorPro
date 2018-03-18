@@ -1,7 +1,7 @@
 ﻿//---------------------------------------------------------------
 // Date: 7/7/2014
 // Rights: 
-// FileName: TaskJ_LastThree.cs
+// FileName: TaskT_TestTask.cs
 //---------------------------------------------------------------
 
 namespace CDP.AppDomain.Tasks.F3K
@@ -12,12 +12,9 @@ namespace CDP.AppDomain.Tasks.F3K
     using System;
     using System.Linq;
 
-    /// <summary>
-    /// Defines Task J in F3K, Last 3 flights
-    /// </summary>
-    public sealed class TaskJ_LastThree : TaskBase
+    public class TaskT_TestTask : TaskBase
     {
-        #region Properties
+        #region Properites
 
         /// <summary>
         /// Gets or sets the type.
@@ -33,7 +30,7 @@ namespace CDP.AppDomain.Tasks.F3K
         /// <value>
         /// The description.
         /// </value>
-        public override string Description => "Last 3 flights in a 10 minute window.  Max flight time of 180 seconds (three minutes).";
+        public override string Description => "Last flight, 5 minute max in a 7 minute window.";
 
         /// <summary>
         /// Gets or sets the name.
@@ -41,7 +38,7 @@ namespace CDP.AppDomain.Tasks.F3K
         /// <value>
         /// The name.
         /// </value>
-        public override string Name => "Task J - Three 3:20's";
+        public override string Name => "Task T - Test task, not for production.";
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is landing scored.
@@ -64,11 +61,11 @@ namespace CDP.AppDomain.Tasks.F3K
         #region Ctors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TaskJ_LastThree"/> class.
+        /// Initializes a new instance of the <see cref="LastFlight7Min" /> class.
         /// </summary>
-        public TaskJ_LastThree()
+        public TaskT_TestTask()
         {
-            base.Id = "f5c32338-00ea-4115-a18c-3612b691bf3a";
+            Id = "gf5227e2-fc4b-401e-bd98-24b25d9846bf";
             InitGates();
         }
 
@@ -90,13 +87,20 @@ namespace CDP.AppDomain.Tasks.F3K
         /// <returns></returns>
         public override bool ValidateTask(RoundScoreBase contestTaskToValidate)
         {
-            if (contestTaskToValidate.TimeGates == null) { return false; }
+            if (contestTaskToValidate.TimeGates == null)
+            {
+                return false;
+            }
 
-            if (contestTaskToValidate.TimeGates.Count > 3) { return false; }
+            if (contestTaskToValidate.TimeGates.Count != NumberOfTimeGatesAllowed)
+            {
+                return false;
+            }
 
-            if (contestTaskToValidate.TimeGates.Sum(x => x.Time.TotalSeconds) > 600) { return false; }
-
-            if (contestTaskToValidate.TimeGates.Any(x => x.Time > TimeSpan.FromSeconds(180))) { return false; }
+            if (contestTaskToValidate.TimeGates.Any(x => x.Time > TimeSpan.FromMinutes(5)))
+            {
+                return false;
+            }
 
             return true;
         }
@@ -106,22 +110,18 @@ namespace CDP.AppDomain.Tasks.F3K
         #region Private Methods
 
         /// <summary>
-        /// Initializes the gates.
+        /// Inits the gates.
         /// </summary>
         private void InitGates()
         {
-            for (var i = 0; i < 3; ++i)
-            {
-                ScoredTimeGates.Add(new TimeGate() { Ordinal = i, Time = TimeSpan.FromSeconds(180) });
-            }
-
+            ScoredTimeGates.Add(new TimeGate() { Ordinal = 0, Time = TimeSpan.FromMinutes(5) });
             TaskFlightWindows.Add(
                 new TimeWindow()
                 {
                     Ordinal = 0,
                     DirectionOfCount = TimerDirection.CountDown,
                     GateType = TimeGateType.Task,
-                    Time = TimeSpan.FromMinutes(10)
+                    Time = TimeSpan.FromSeconds(10)
                 });
         }
 

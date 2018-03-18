@@ -52,7 +52,7 @@ namespace CDP.CoreApp.Tests.ContestEngineTests
             mockTaskRepository.Setup(tr => tr.ReadAsync(It.IsAny<ContestType>())).Returns(Task.FromResult(new Result<IEnumerable<TaskBase>>(taskGenerator.GetAllTasksAsList())));
             mockTaskRepository.Setup(tr => tr.ReadAsync(It.IsAny<string>()))
                 .Returns<string>((id) => Task.FromResult(new Result<TaskBase>(taskGenerator.GetAllTasksAsList().Where(t => t.Id == id).Single())));
-
+            
             var allPilots = ContestThatHasStartedData_RandomSort.GetAllPilots();
             mockPilotRepository.Setup(p => p.ReadAsync()).Returns(Task.FromResult(new Result<IEnumerable<Pilot>>(allPilots)));
 
@@ -159,6 +159,15 @@ namespace CDP.CoreApp.Tests.ContestEngineTests
         internal static Result<ContestScoresCollection> GetContestScores()
         {
             return new Result<ContestScoresCollection>(JsonConvert.DeserializeObject<ContestScoresCollection>("[{\"id\":\"7fd15c03-f551-4f74-972e-c53c2a0b4330\",\"contestId\":\"4dd104ea-05e5-4cbf-93ae-026b2392da0d\",\"taskId\":\"cf5227e2-fc4b-401e-bd98-24b25d9846bf\",\"pilotId\":\"27bf2738-72c2-4e68-ba30-459afb0db4b7\",\"roundOrdinal\":0,\"flightGroup\":1,\"timeGates\":[{\"Time\":\"00:04:40\",\"Ordinal\":0,\"GateType\":0}],\"score\":933.0,\"totalPenalties\":0.0},{\"id\":\"5c44653c-dfeb-497a-b6ff-4afa137a327e\",\"contestId\":\"4dd104ea-05e5-4cbf-93ae-026b2392da0d\",\"taskId\":\"cf5227e2-fc4b-401e-bd98-24b25d9846bf\",\"pilotId\":\"58decef1-6f71-4153-abb2-1541145de16f\",\"roundOrdinal\":0,\"flightGroup\":1,\"timeGates\":[{\"Time\":\"00:05:00\",\"Ordinal\":0,\"GateType\":0}],\"score\":1000.0,\"totalPenalties\":0.0},{\"id\":\"b858289d-44c6-46d8-8c1a-4a6b639002a7\",\"contestId\":\"4dd104ea-05e5-4cbf-93ae-026b2392da0d\",\"taskId\":\"cf5227e2-fc4b-401e-bd98-24b25d9846bf\",\"pilotId\":\"b7a1cd19-8b45-4da6-aa64-6c4e237544db\",\"roundOrdinal\":0,\"flightGroup\":1,\"timeGates\":[{\"Time\":\"00:03:23\",\"Ordinal\":0,\"GateType\":0}],\"score\":677.0,\"totalPenalties\":0.0},{\"id\":\"adbec24a-2745-4c2a-bb87-987eb8afc3bc\",\"contestId\":\"4dd104ea-05e5-4cbf-93ae-026b2392da0d\",\"taskId\":\"cf5227e2-fc4b-401e-bd98-24b25d9846bf\",\"pilotId\":\"d9ee19bc-9ca9-48e4-ae71-0186dcf7c181\",\"roundOrdinal\":0,\"flightGroup\":1,\"timeGates\":[{\"Time\":\"00:05:00\",\"Ordinal\":0,\"GateType\":0}],\"score\":1000.0,\"totalPenalties\":0.0},{\"id\":\"9721b5f9-3f78-49a1-b47c-fb87b30d099f\",\"contestId\":\"4dd104ea-05e5-4cbf-93ae-026b2392da0d\",\"taskId\":\"cf5227e2-fc4b-401e-bd98-24b25d9846bf\",\"pilotId\":\"fb191740-1608-4348-aa9f-59d7bdd75d22\",\"roundOrdinal\":0,\"flightGroup\":1,\"timeGates\":[{\"Time\":\"00:05:00\",\"Ordinal\":0,\"GateType\":0}],\"score\":1000.0,\"totalPenalties\":0.0}]"));
+        }
+
+        /// <summary>
+        /// Gets the flight matrix.
+        /// </summary>
+        /// <returns></returns>
+        internal static Result<FlightMatrix> GetFlightMatrix()
+        {
+            return new Result<FlightMatrix>(new FlightMatrix());
         }
     }
 

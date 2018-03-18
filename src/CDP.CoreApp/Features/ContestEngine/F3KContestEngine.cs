@@ -130,7 +130,6 @@ namespace CDP.CoreApp.Features.ContestEngine
             // Initialize the flight groups
             InitializeFlightGroupQueue(this.Contest.Rounds[this.CurrentRoundOrdinal], this.CurrentFlightGroup);
             ResetFlightWindows();
-            this.GetNextTimeWindow();
         }
 
         /// <summary>
@@ -145,7 +144,7 @@ namespace CDP.CoreApp.Features.ContestEngine
                 this.logger.LogException(ex);
                 throw ex;
             }
-
+            
             // If this is the last flight group, load the next round
             if (this.flightGroupQueue.Count < 1)
             {
@@ -180,13 +179,11 @@ namespace CDP.CoreApp.Features.ContestEngine
         /// Gets the next time window.
         /// </summary>
         /// <returns></returns>
-        public override TimeWindow GetNextTimeWindow()
+        public override void SetTimeWindow()
         {
             this.CurrentTimeWindow = timeWindowsQueue.Count > 0
                 ? timeWindowsQueue.Dequeue()
                 : null;
-
-            return this.CurrentTimeWindow;
         }
 
         /// <summary>
@@ -262,7 +259,7 @@ namespace CDP.CoreApp.Features.ContestEngine
 
             // Init the time windows for the contest clock.
             ResetFlightWindows();
-            this.GetNextTimeWindow();
+            this.SetTimeWindow();
 
             // Update the contest object to save state.
             await this.contestStorageIntr.Value.UpdateContestAsync(this.Contest);
@@ -473,7 +470,7 @@ namespace CDP.CoreApp.Features.ContestEngine
                 GateType = TimeGateType.Practice,
                 DirectionOfCount = TimerDirection.CountDown,
                 CountDownLast10Seconds = true,
-                Time = new TimeSpan(0, 3, 0)
+                Time = new TimeSpan(0, 0, 10)
             });
 
             //Task Window (build from the task object)
@@ -510,7 +507,7 @@ namespace CDP.CoreApp.Features.ContestEngine
                 GateType = TimeGateType.Landing,
                 DirectionOfCount = TimerDirection.CountDown,
                 CountDownLast10Seconds = true,
-                Time = new TimeSpan(0, 1, 0)
+                Time = new TimeSpan(0, 0, 10)
             });
 
             return returnVal;

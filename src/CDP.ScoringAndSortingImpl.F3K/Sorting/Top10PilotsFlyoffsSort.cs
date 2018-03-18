@@ -79,17 +79,16 @@ namespace CDP.ScoringAndSortingImpl.F3K.Sorting
                 throw new ArgumentOutOfRangeException($"{nameof(suggestedNumberOfPilotsInFlightGroup)} is out of range.  Must be 10.");
             }
 
-            var sortedPilots = new Dictionary<string, FlightGroup>();
+            var flyoffPilots = new Dictionary<string, FlightGroup>();
             var sortedPilotIds = currentScores.OrderByDescending(pilotScoreSet => pilotScoreSet.Value.TotalScore).Select(r => r.Key).ToList();
-            var cnt = 0;
+            var madeTheCut = sortedPilotIds.Take(10);
 
-            foreach (var pilotId in sortedPilotIds)
+            foreach (var pilotId in madeTheCut)
             {
-                if (++cnt == 10) break;
-                sortedPilots.Add(pilotId, FlightGroup.A);
+                flyoffPilots.Add(pilotId, FlightGroup.A);
             }
 
-            return sortedPilots;
+            return flyoffPilots;
         }
     }
 }
