@@ -44,7 +44,7 @@ namespace CDP.Repository.WindowsStorage
             var taskI = new TaskI_ThreeThreeTwenties();
             var taskJ = new TaskJ_LastThree();
             var taskK = new TaskK_BigLadder();
-            var taskT = new TaskT_TestTask();
+            
 
             this.internalCache.Add(taskA.Id, taskA);
             this.internalCache.Add(taskB.Id, taskB);
@@ -59,7 +59,13 @@ namespace CDP.Repository.WindowsStorage
             this.internalCache.Add(taskI.Id, taskI);
             this.internalCache.Add(taskJ.Id, taskJ);
             this.internalCache.Add(taskK.Id, taskK);
+
+// Add in a task that runs quick for debugging. 
+#if DEBUG
+            var taskT = new TaskT_TestTask();
             this.internalCache.Add(taskT.Id, taskT);
+#endif
+
         }
 
         /// <summary>

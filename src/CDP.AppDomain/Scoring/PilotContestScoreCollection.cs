@@ -45,6 +45,11 @@ namespace CDP.AppDomain.Scoring
         public int DroppedRoundOrdinal { get; set; } = -1;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="PilotContestScoreCollection"/> class (for serialization).
+        /// </summary>
+        public PilotContestScoreCollection() { }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PilotContestScoreCollection"/> class.
         /// </summary>
         /// <param name="pilotId">The pilot identifier.</param>
