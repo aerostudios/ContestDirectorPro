@@ -5,7 +5,7 @@
 * When this app has reached a stable state, it will be released to the windows store *
 
 In order to test the UWP application on a machine other than your dev box, you will need to sign it w/ a cert and then set up the host machine to be able to side load packages.  See the Microsoft documenation for this. 
-(Side Loading)[https://docs.microsoft.com/en-us/windows/application-management/sideload-apps-in-windows-10]
+[Side Loading](https://docs.microsoft.com/en-us/windows/application-management/sideload-apps-in-windows-10)
 
 [Self-Signing an App](https://docs.microsoft.com/en-us/windows/uwp/packaging/create-certificate-package-signing)
 
