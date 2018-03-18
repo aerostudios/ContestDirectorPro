@@ -1,17 +1,13 @@
-﻿using CDP.AppDomain;
-using CDP.AppDomain.Scoring;
+﻿using CDP.AppDomain.Scoring;
 using CDP.Common.Logging;
-using CDP.CoreApp.Features.Scoring.Queries;
 using CDP.CoreApp.Interfaces.Contests;
 using CDP.CoreApp.Interfaces.Scoring;
-using CDP.ScoringAndSortingImpl.F3K.Scoring;
 using CDP.ScoringAndSortingImpl.F3K.Sorting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CDP.ScoringAndSortingImpl.F3K.Tests
 {

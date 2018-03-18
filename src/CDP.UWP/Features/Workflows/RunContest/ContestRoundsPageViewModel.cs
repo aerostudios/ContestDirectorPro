@@ -797,6 +797,11 @@ namespace CDP.UWP.Features.Workflows.RunContest
         private void ContestCommunicationsHub_SignalRConnectionStateChanged(object sender, CommunicationHub.ContestMediator.Events.SignalRConnectionStateChangedEventArgs e)
         {
             this.IsConnected = e.State == SignalRConnectionState.Connected;
+
+            if(this.IsConnected == false)
+            {
+                base.Alert("The app has disconnected from the host server.  Please re-connect.");
+            }
         }
 
         #endregion
