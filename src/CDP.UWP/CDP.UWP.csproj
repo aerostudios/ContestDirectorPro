@@ -186,6 +186,7 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\3-Second-Horn.wav" />
     <Content Include="Assets\CDPLogo.png" />
     <Content Include="Assets\CDProLogo_HackSmall.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />

@@ -525,6 +525,9 @@ namespace CDP.UWP.Features.Workflows.RunContest
                                             .Rounds[App.ContestEngine.CurrentRoundOrdinal].FlightGroups
                                             .Where(fg => fg.Key == App.ContestEngine.CurrentFlightGroup).First().Value;
 
+                // Sound the Horn
+                await this.voiceBox.SoundHorn();
+
                 var pilotsInFlightGroupAnnouncement = BuildPilotsInFlightGroupAnnouncement(pilotsInFlightGroup);
                 await this.voiceBox.SayItAsync($"{pilotsInFlightGroupAnnouncement}; {currentTask.Name}; {App.ContestEngine.CurrentTimeWindow.Name}");
 
@@ -704,6 +707,9 @@ namespace CDP.UWP.Features.Workflows.RunContest
                     this.CurrentTime = App.ContestEngine.CurrentTimeWindow.Time.ToString("c");
                     this.IsStartRoundButtonVisible = false;
 
+                    // Sound the Horn
+                    await this.voiceBox.SoundHorn();
+
                     // Announce the window if it isn't the task window
                     if (!App.ContestEngine.CurrentTimeWindow.Name.Contains("task", StringComparison.OrdinalIgnoreCase))
                     {
@@ -724,6 +730,10 @@ namespace CDP.UWP.Features.Workflows.RunContest
                     this.IsRoundInProgressButtonGroupVisible = false;
                     this.IsMoveNextButtonVisible = true;
                     this.RoundTimerCurrentFlightWindow = string.Empty;
+
+                    // Sound the Horn
+                    await this.voiceBox.SoundHorn();
+
                     await App.ContestCommunicationsHub.PostRoundTimerStopped(new TimeSpan());
                 });
             }
