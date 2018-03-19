@@ -62,6 +62,15 @@ namespace CDP.AppDomain.Registration
         public bool AirframesSignedOff { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the team.
+        /// </summary>
+        /// <value>
+        /// The name of the team.
+        /// </value>
+        [JsonProperty]
+        public string TeamName { get; set; }
+
+        /// <summary>
         /// Gets or sets the airframe registration numbers.
         /// </summary>
         /// <value>

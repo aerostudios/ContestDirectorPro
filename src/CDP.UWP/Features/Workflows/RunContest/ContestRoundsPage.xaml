@@ -138,14 +138,15 @@
                         <Rectangle Width="10"></Rectangle>
                         <TextBlock FontSize="30" FontWeight="Bold" Foreground="{ThemeResource InformationalFontColorBrush}" Text="{x:Bind ViewModel.CurrentTaskName, Mode=OneWay}"/>
                     </StackPanel>
-                    <ListView x:Name="lvRound" 
+                    <ListView x:Name="lvRound"
+                              TabFocusNavigation="Cycle"
                               ItemsSource="{x:Bind ViewModel.FlightGroupsForCurrentRoundViewModels, Mode=OneWay}" 
                               SelectionMode="None"
                               Visibility="{x:Bind ViewModel.ShowFlightGroups, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="additionalVms:FlightGroupViewModel">
                                 <Border BorderBrush="LightGray" BorderThickness="0">
-                                    <Grid MinWidth="900">
+                                    <Grid MinWidth="900" TabFocusNavigation="Cycle">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="200"/>
                                             <ColumnDefinition/>
@@ -184,7 +185,7 @@
                                                 BorderBrush="{ThemeResource LightBorderBrush}" 
                                                 Background="{ThemeResource SecondaryColorBrush}" 
                                                 BorderThickness="0,1,1,1">
-                                            <Grid MinWidth="900">
+                                            <Grid MinWidth="900" TabFocusNavigation="Cycle">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="200"/>
                                                     <ColumnDefinition Width="365"/>
@@ -255,7 +256,8 @@
                                                             Padding="15,0,0,0" 
                                                             Margin="0" 
                                                             BorderThickness="1,0,1,1">
-                                                        <StackPanel Orientation="Horizontal" 
+                                                        <StackPanel Orientation="Horizontal"
+                                                                    TabFocusNavigation="Cycle"
                                                                     VerticalAlignment="Center">
                                                             <TextBlock Foreground="{ThemeResource PrimaryFontColorBrush}" 
                                                                        Text="{x:Bind Name}" 
@@ -275,7 +277,7 @@
                                                                 </GridView.ItemContainerStyle>
                                                                 <GridView.ItemTemplate>
                                                                     <DataTemplate x:DataType="additionalVms:TimeGateViewModel">
-                                                                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
+                                                                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" TabFocusNavigation="Cycle">
                                                                             <TextBox Background="{ThemeResource PrimaryColorBrush}" Foreground="{ThemeResource PrimaryFontColorBrush}" Extensions:TextBoxMask.Mask="9:99" Text="{x:Bind Time, Mode=TwoWay}" VerticalAlignment="Center"/>
                                                                         </StackPanel>
                                                                     </DataTemplate>

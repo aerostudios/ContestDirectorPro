@@ -104,6 +104,27 @@ namespace CDP.UWP.Components.Speech
             }
         }
 
+        /// <summary>
+        /// Sounds the horn.
+        /// </summary>
+        /// <returns></returns>
+        public async Task SoundHorn()
+        {
+            try
+            {
+                await Task.Run(() => 
+                {
+                    Uri pathUri = new Uri("ms-appx:///Assets/3-Second-Horn.wav");
+                    mediaPlayer.Source = MediaSource.CreateFromUri(pathUri);
+                    mediaPlayer.Play();
+                });
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Private Methods
