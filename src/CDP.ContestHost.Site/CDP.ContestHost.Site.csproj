@@ -18,6 +18,7 @@
     <None Remove="ClientApp\app\features\pages\scoreboard\scoreboardPage.ts" />
     <None Remove="ClientApp\app\features\pages\timerRegistration\timerRegistrationPage.ts" />
     <None Remove="ClientApp\app\features\pages\timing\timingPage.ts" />
+    <None Remove="ClientApp\app\Interfaces\FlightGroup.ts" />
     <None Remove="ClientApp\app\Interfaces\IFinalTimeSheetPostedEventArgs.ts" />
     <None Remove="ClientApp\app\Interfaces\INewRoundAvailableEventArgs.ts" />
     <None Remove="ClientApp\app\Interfaces\IPilot.ts" />
@@ -25,6 +26,7 @@
     <None Remove="ClientApp\app\Interfaces\ITask.ts" />
     <None Remove="ClientApp\app\Interfaces\ITimeGate.ts" />
     <None Remove="ClientApp\app\Interfaces\ITimeSheet.ts" />
+    <None Remove="ClientApp\app\Interfaces\KeyedCollection.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,6 +66,7 @@
     <TypeScriptCompile Include="ClientApp\app\features\pages\timerRegistration\timerRegistrationPage.ts" />
     <TypeScriptCompile Include="ClientApp\app\features\pages\scoreboard\scoreboardPage.ts" />
     <TypeScriptCompile Include="ClientApp\app\features\pages\timing\timingPage.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Interfaces\FlightGroup.ts" />
     <TypeScriptCompile Include="ClientApp\app\Interfaces\IFinalTimeSheetPostedEventArgs.ts" />
     <TypeScriptCompile Include="ClientApp\app\Interfaces\INewRoundAvailableEventArgs.ts" />
     <TypeScriptCompile Include="ClientApp\app\Interfaces\IPilot.ts" />
@@ -71,6 +74,7 @@
     <TypeScriptCompile Include="ClientApp\app\Interfaces\ITask.ts" />
     <TypeScriptCompile Include="ClientApp\app\Interfaces\ITimeGate.ts" />
     <TypeScriptCompile Include="ClientApp\app\Interfaces\ITimeSheet.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Interfaces\KeyedCollection.ts" />
   </ItemGroup>
 
   <ItemGroup>

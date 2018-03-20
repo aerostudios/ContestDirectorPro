@@ -8,6 +8,7 @@ import { FinalTimeSheetPostedEventArgs } from '../../../Interfaces/IFinalTimeShe
 import { Pilot } from '../../../Interfaces/IPilot';
 import { TimeSheet } from '../../../Interfaces/ITimeSheet';
 import { TimeGate } from '../../../Interfaces/ITimeGate';
+import { FlightGroup } from '../../../Interfaces/FlightGroup';
 
 @inject(SignalRConnector, HttpClient)
 export class TimerPage {
@@ -124,6 +125,9 @@ export class TimerPage {
 
         // Bind to the new round posted event
         this.scoringConnection.on("NewRoundAvailable", (args) => { this.newRoundPosted(args); })
+
+        // Bind to the timer ping event
+        this.scoringConnection.on("RoundTimerClockPing", (args) => { this.startRoundTimer(args); })
     }
 
     /**
@@ -137,7 +141,8 @@ export class TimerPage {
             .then(response => response.json())
             .then(data => {
                 this.showPilotList = true;
-                for (let pilot of data.rounds[data.state.currentRoundOrdinal].flightGroups["B"]) {
+                const currentFlightGroup: string = FlightGroup[<number>data.state.currentFlightGroup];
+                for (let pilot of data.rounds[data.state.currentRoundOrdinal].flightGroups[currentFlightGroup]) {
                     let newPilot = new Pilot();
                     newPilot.FirstName = pilot.firstName;
                     newPilot.LastName = pilot.lastName;

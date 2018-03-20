@@ -51,18 +51,11 @@ namespace CDP.ContestHost.FileStoreRepository
                 logger.LogTrace($"{nameof(ContestRespository)}:{nameof(CreateAsync)} - Contest to create already has an id, but that is OK in this Server Side Cache repository");
             }
 
-            var allContests = (await GetAll<Contest>()) ?? new List<Contest>();
-
-            if (allContests == null)
+            // We always overrite and only store 1 contest in this repository.
+            var allContests = new List<Contest>
             {
-                allContests = new List<Contest>();
-            }
-            else if (allContests.Count(c => c.Name == contestToCreate.Name) > 0)
-            {
-                return Error<Contest>(null, new Exception("A contest with this name already exists."));
-            }
-
-            allContests.Add(contestToCreate);
+                contestToCreate
+            };
 
             try
             {
