@@ -781,6 +781,15 @@ namespace CDP.UWP.Features.Workflows.RunContest
                 return;
             }
 
+            // Ping the timers to keep them in sync
+            this.Dispatcher.DispatchAsync(async () => 
+            {
+                if (e.CurrentTime.TotalSeconds % 20 == 0)
+                {
+                    await App.ContestCommunicationsHub.PostRoundTimerCurrentTime(e.CurrentTime);
+                }
+            });
+            
             // Check to see if we have hit any of the checkpoints set
             //foreach (var time in this.voiceConfig.CheckpointsToAnnounce)
             //{

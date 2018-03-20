@@ -295,11 +295,12 @@ namespace CDP.UWP.Components.ContestMediator
         /// <param name="currentClickTime">The current click time.</param>
         internal async Task PostRoundTimerCurrentTime(TimeSpan currentClockTime)
         {
-            RoundTimerClockPing?.Invoke(this, new RoundTimerEventArgs(currentClockTime));
+            var args = new RoundTimerEventArgs(currentClockTime);
+            RoundTimerClockPing?.Invoke(this, args);
 
             try
             {
-                if (this.hubConnection != null) await this.hubConnection.InvokeAsync<object>("RoundTimerCurrentTime", currentClockTime);
+                if (this.hubConnection != null) await this.hubConnection.InvokeAsync<object>("RoundTimerClockPing", args);
                 this.logger.LogTrace($"{nameof(PostRoundTimerCurrentTime)}: Sent round timer current time update command to host server.");
             }
             catch (Exception ex)
