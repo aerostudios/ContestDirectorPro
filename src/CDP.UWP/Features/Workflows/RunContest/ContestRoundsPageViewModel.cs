@@ -192,7 +192,7 @@ namespace CDP.UWP.Features.Workflows.RunContest
         /// <value>
         /// The current round.
         /// </value>
-        public ContestRoundViewModel CurrentRound { get { return currentRoundViewModel; } set { Set(ref currentRoundViewModel, value); } }
+        public ContestRoundViewModel CurrentRoundViewModel { get { return currentRoundViewModel; } set { Set(ref currentRoundViewModel, value); } }
 
         /// <summary>
         /// Gets or sets the name of the current task.
@@ -607,9 +607,31 @@ namespace CDP.UWP.Features.Workflows.RunContest
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         public void MoveToNextFlightGroup_Click(object sender, RoutedEventArgs e)
         {
-            // Set the next flight group
-            this.Dispatcher.Dispatch(() =>
+            this.Dispatcher.DispatchAsync(async () =>
             {
+                var roundNumberBeforeMove = App.ContestEngine.CurrentRoundOrdinal;
+
+                // Advance the contest via the contest engine
+                await App.ContestEngine.MoveToNextContestStage();
+
+                // If this is a single round scroing contest (Seeded MoM) and we are done with this round,
+                // build out the new viewmodels for the flight groups
+                if ((this.sortingAlgo.IsSingleRoundSort() && roundNumberBeforeMove < App.ContestEngine.CurrentRoundOrdinal) ||
+                    App.ContestEngine.Contest.Rounds[App.ContestEngine.CurrentRoundOrdinal].IsFlyOffRound)
+                {
+                    var newViewModels = await CreateContestRoundViewModelsFromMatrix(App.ContestEngine.FlightMatrix, App.ContestEngine.Contest, App.ContestEngine.PilotsInContest);
+                    ResetRoundViewModels(newViewModels);
+                }
+
+                // Update the UI state
+                SetCurrentUIRound(App.ContestEngine.CurrentRoundOrdinal);
+
+                // Load the view models
+                this.CurrentRoundViewModel = this.contestRoundsViewModels.Where(crvm => crvm.Ordinal == App.ContestEngine.CurrentRoundOrdinal).Single();
+                this.FlightGroupsForCurrentRoundViewModels = this.CurrentRoundViewModel.FlightGroups;
+
+                // Set Round timer view state
+                this.RoundTimerCurrentFlightGroup = App.ContestEngine.CurrentFlightGroup;
                 this.LiveScoresForCurrentFlightGroupViewModels.Clear();
                 this.IsRoundInProgressButtonGroupVisible = false;
                 this.IsStartRoundButtonVisible = true;
@@ -1355,27 +1377,8 @@ namespace CDP.UWP.Features.Workflows.RunContest
                         return;
                     }
 
-                    // Save the scores and move to next stage
-                    var tempCurrentRound = App.ContestEngine.CurrentRoundOrdinal;
+                    // Save the scores.
                     await App.ContestEngine.ScoreFlightGroup(timeSheets as IEnumerable<TimeSheet>);
-                    var roundNumberBeforeMove = App.ContestEngine.CurrentRoundOrdinal;
-                    await App.ContestEngine.MoveToNextContestStage();
-
-                    // If this is a single round scroing contest (Seeded MoM)
-                    // build out the new viewmodels for the flight groups
-                    if ((this.sortingAlgo.IsSingleRoundSort() && roundNumberBeforeMove < App.ContestEngine.CurrentRoundOrdinal) ||
-                        App.ContestEngine.Contest.Rounds[App.ContestEngine.CurrentRoundOrdinal].IsFlyOffRound)
-                    {
-                        var newViewModels = await CreateContestRoundViewModelsFromMatrix(App.ContestEngine.FlightMatrix, App.ContestEngine.Contest, App.ContestEngine.PilotsInContest);
-                        ResetRoundViewModels(newViewModels);
-                    }
-
-                    // Update the UI state
-                    SetCurrentUIRound(App.ContestEngine.CurrentRoundOrdinal);
-
-                    this.RoundTimerCurrentFlightGroup = App.ContestEngine.CurrentFlightGroup;
-                    this.CurrentRound = this.contestRoundsViewModels.Where(crvm => crvm.Ordinal == App.ContestEngine.CurrentRoundOrdinal).Single();
-                    this.FlightGroupsForCurrentRoundViewModels = this.CurrentRound.FlightGroups;
 
                     foreach (var timeSheet in timeSheets)
                     {

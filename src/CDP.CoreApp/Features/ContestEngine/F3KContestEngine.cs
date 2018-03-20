@@ -205,13 +205,13 @@ namespace CDP.CoreApp.Features.ContestEngine
             {
                 logger.LogException(new ArgumentNullException($"The {nameof(timeSheets)} parameter cannot be null."));
             }
-
-            // Saves the scores.  The interactor handles the validation as the Core App needs to own that business
-            // logic.  For the UI to be responsive to user errors, it should probably handled higher up the stack...  TODO.
+            
             var saveScoresResult = await this.scoringCmdIntr.Value.SaveRoundScoresAsync(timeSheets, this.Contest.Id);
             if (saveScoresResult.IsFaulted)
             {
-                logger.LogException(new Exception($"Failed to same timesheets for round {timeSheets.First().RoundOrdinal}, flight group {timeSheets.First().FlightGroup}"));
+                var ex = new Exception($"Failed to same timesheets for round {timeSheets.First().RoundOrdinal}, flight group {timeSheets.First().FlightGroup}");
+                logger.LogException(ex);
+                throw ex;
             }
         }
 
