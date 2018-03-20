@@ -237,6 +237,7 @@
                                                   Grid.ColumnSpan="2"
                                                   Grid.Row="2"
                                                   ItemsSource="{x:Bind Pilots, Mode=TwoWay}" VerticalAlignment="Center"
+                                                  TabFocusNavigation="Cycle"
                                                   Background="{ThemeResource TernaryColorBrush}">
                                             <ListView.ItemContainerStyle>
                                                 <Style TargetType="ListViewItem">
@@ -262,7 +263,7 @@
                                                             <TextBlock Foreground="{ThemeResource PrimaryFontColorBrush}" 
                                                                        Text="{x:Bind Name}" 
                                                                        VerticalAlignment="Center" Width="200"/>
-                                                            <GridView x:Name="lvPilots" ItemsSource="{x:Bind Gates, Mode=OneWay}" Width="350" Padding="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                            <GridView x:Name="lvPilots" ItemsSource="{x:Bind Gates, Mode=OneWay}" TabFocusNavigation="Cycle" TabNavigation="Cycle" Width="350" Padding="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center">
                                                                 <GridView.ItemContainerStyle>
                                                                     <Style TargetType="GridViewItem">
                                                                         <Setter Property="Background" Value="Transparent" />
@@ -277,18 +278,17 @@
                                                                 </GridView.ItemContainerStyle>
                                                                 <GridView.ItemTemplate>
                                                                     <DataTemplate x:DataType="additionalVms:TimeGateViewModel">
-                                                                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" TabFocusNavigation="Cycle">
-                                                                            <TextBox Background="{ThemeResource PrimaryColorBrush}" Foreground="{ThemeResource PrimaryFontColorBrush}" Extensions:TextBoxMask.Mask="9:99" Text="{x:Bind Time, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                                                        </StackPanel>
+                                                                        <TextBox Background="{ThemeResource PrimaryColorBrush}" Foreground="{ThemeResource PrimaryFontColorBrush}" Extensions:TextBoxMask.Mask="9:99" Text="{x:Bind Time, Mode=TwoWay}" VerticalAlignment="Center"/>
                                                                     </DataTemplate>
                                                                 </GridView.ItemTemplate>
                                                             </GridView>
                                                             <Border Margin="10,0,10,0" BorderThickness="2">
                                                                 <TextBox Padding="15,0,15,0"
-                                                                           Width="50"
-                                                                           Foreground="{ThemeResource PrimaryFontColorBrush}"
-                                                                           Text="{x:Bind Penalty, Mode=TwoWay}" 
-                                                                           VerticalAlignment="Center" />
+                                                                         Width="50"
+                                                                         IsTabStop="False"
+                                                                         Foreground="{ThemeResource PrimaryFontColorBrush}"
+                                                                         Text="{x:Bind Penalty, Mode=TwoWay}" 
+                                                                         VerticalAlignment="Center" />
                                                             </Border>
                                                             <Border Padding="15,0,15,0" Margin="25,0,20,0" Background="Black" BorderThickness="2">
                                                                 <TextBlock Width="50"
