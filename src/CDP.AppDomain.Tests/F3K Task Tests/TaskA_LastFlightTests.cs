@@ -14,7 +14,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         private TaskA_LastFlightSevenMin taskA = new TaskA_LastFlightSevenMin();
 
         [TestMethod]
-        public void VerifyBasicProperties()
+        public void TaskA_LastFlightTests_VerifyBasicProperties()
         {
             Assert.IsFalse(string.IsNullOrEmpty(taskA.Description));
             Assert.IsFalse(string.IsNullOrEmpty(taskA.Name));
@@ -27,7 +27,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void VerifyTask_HappyPath()
+        public void TaskA_LastFlightTests_VerifyTask_HappyPath()
         {
             var roundScore = new TimeSheet
             {
@@ -53,7 +53,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void VerifyTask_TwoGates()
+        public void TaskA_LastFlightTests_VerifyTask_TwoGates()
         {
             var roundScore = new TimeSheet
             {
@@ -87,7 +87,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void VerifyTask_OverTime()
+        public void TaskA_LastFlightTests_VerifyTask_OverTime()
         {
             var roundScore = new TimeSheet
             {
@@ -113,7 +113,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void ScoreTask_HappyPath()
+        public void TaskA_LastFlightTests_ScoreTask_HappyPath()
         {
             var roundScore = new TimeSheet
             {

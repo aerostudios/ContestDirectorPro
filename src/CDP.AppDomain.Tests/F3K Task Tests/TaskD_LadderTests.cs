@@ -14,7 +14,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         private TaskD_Ladder taskD = new TaskD_Ladder();
 
         [TestMethod]
-        public void VerifyBasicProperties()
+        public void TaskD_LadderTests_VerifyBasicProperties()
         {
             Assert.IsFalse(string.IsNullOrEmpty(taskD.Description));
             Assert.IsFalse(string.IsNullOrEmpty(taskD.Name));
@@ -27,7 +27,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void VerifyTask_HappyPath()
+        public void TaskD_LadderTests_VerifyTask_HappyPath()
         {
             var roundScore = new TimeSheet
             {
@@ -91,7 +91,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void VerifyTask_TwoInSameWindow()
+        public void TaskD_LadderTests_VerifyTask_TwoInSameWindow()
         {
             var roundScore = new TimeSheet
             {
@@ -155,7 +155,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void VerifyTask_CanUpShortOnOne()
+        public void TaskD_LadderTests_VerifyTask_CanUpShortOnOne()
         {
             var roundScore = new TimeSheet
             {
@@ -219,7 +219,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
         }
 
         [TestMethod]
-        public void ScoreTask_HappyPath()
+        public void TaskD_LadderTests_ScoreTask_HappyPath()
         {
             var roundScore = new TimeSheet
             {

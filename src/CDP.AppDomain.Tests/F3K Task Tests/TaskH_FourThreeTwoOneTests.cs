@@ -9,25 +9,25 @@ using System.Collections.Generic;
 namespace CDP.AppDomain.Tests.F3K_Task_Tests
 {
     [TestClass]
-    public class TaskB_LastTwoFlights4MinMaxTests
+    public class TaskH_FourThreeTwoOneTests
     {
-        private TaskB_LastTwoFlights4MinMax taskB = new TaskB_LastTwoFlights4MinMax();
-
+        private TaskH_FourThreeTwoOne taskH = new TaskH_FourThreeTwoOne();
+         
         [TestMethod]
-        public void TaskB_LastTwoFlights4MinMaxTests_VerifyBasicProperties()
+        public void TaskH_FourThreeTwoOneTests_VerifyBasicProperties()
         {
-            Assert.IsFalse(string.IsNullOrEmpty(taskB.Description));
-            Assert.IsFalse(string.IsNullOrEmpty(taskB.Name));
-            Assert.IsFalse(string.IsNullOrEmpty(taskB.Id));
-            Assert.IsFalse(taskB.IsLandingScored);
-            Assert.IsTrue(taskB.NumberOfTimeGatesAllowed == 2);
-            Assert.IsTrue(taskB.ScoredTimeGates.Count == 2);
-            Assert.IsTrue(taskB.TaskFlightWindows.Count == 1);
-            Assert.IsTrue(taskB.Type == Contests.ContestType.F3K);
+            Assert.IsFalse(string.IsNullOrEmpty(taskH.Description));
+            Assert.IsFalse(string.IsNullOrEmpty(taskH.Name));
+            Assert.IsFalse(string.IsNullOrEmpty(taskH.Id));
+            Assert.IsFalse(taskH.IsLandingScored);
+            Assert.IsTrue(taskH.NumberOfTimeGatesAllowed == 4);
+            Assert.IsTrue(taskH.ScoredTimeGates.Count == 4);
+            Assert.IsTrue(taskH.TaskFlightWindows.Count == 1);
+            Assert.IsTrue(taskH.Type == Contests.ContestType.F3K);
         }
 
         [TestMethod]
-        public void TaskB_LastTwoFlights4MinMaxTests_VerifyTask_HappyPath()
+        public void TaskH_FourThreeTwoOneTests_VerifyTask_HappyPath()
         {
             var roundScore = new TimeSheet
             {
@@ -37,7 +37,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
                 PilotId = "23423423",
                 RoundOrdinal = 0,
                 Score = 0,
-                TaskId = taskB.Id,
+                TaskId = taskH.Id,
                 TotalPenalties = 0
             };
 
@@ -47,61 +47,33 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
                     {
                         Ordinal = 0,
                         GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 240)
+                        Time = new TimeSpan(0, 0, 60)
                     },
                     new TimeGate
                     {
                         Ordinal = 1,
                         GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 240)
-                    }
-                });
-
-            Assert.IsTrue(taskB.ValidateTask(roundScore));
-        }
-
-        [TestMethod]
-        public void TaskB_LastTwoFlights4MinMaxTests_VerifyTask_ThreeGates()
-        {
-            var roundScore = new TimeSheet
-            {
-                ContestId = "asdfasf",
-                FlightGroup = FlightGroup.A,
-                Id = "2342342",
-                PilotId = "23423423",
-                RoundOrdinal = 0,
-                Score = 0,
-                TaskId = taskB.Id,
-                TotalPenalties = 0
-            };
-
-            roundScore.TimeGates.AddRange(new List<TimeGate>
-                {
-                    new TimeGate
-                    {
-                        Ordinal = 0,
-                        GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 15)
-                    },
-                    new TimeGate
-                    {
-                        Ordinal = 1,
-                        GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 300)
+                        Time = new TimeSpan(0, 0, 120)
                     },
                     new TimeGate
                     {
                         Ordinal = 2,
                         GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 15)
+                        Time = new TimeSpan(0, 0, 180)
                     },
+                    new TimeGate
+                    {
+                        Ordinal = 3,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 233)
+                    }
                 });
 
-            Assert.IsFalse(taskB.ValidateTask(roundScore));
+            Assert.IsTrue(taskH.ValidateTask(roundScore));
         }
 
         [TestMethod]
-        public void TaskB_LastTwoFlights4MinMaxTests_VerifyTask_OverTime()
+        public void TaskH_FourThreeTwoOneTests_VerifyTask_FiveGates()
         {
             var roundScore = new TimeSheet
             {
@@ -111,7 +83,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
                 PilotId = "23423423",
                 RoundOrdinal = 0,
                 Score = 0,
-                TaskId = taskB.Id,
+                TaskId = taskH.Id,
                 TotalPenalties = 0
             };
 
@@ -121,21 +93,39 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
                     {
                         Ordinal = 0,
                         GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 240)
+                        Time = new TimeSpan(0, 0, 60)
                     },
                     new TimeGate
                     {
                         Ordinal = 1,
                         GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 241)
+                        Time = new TimeSpan(0, 0, 120)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 2,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 180)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 3,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 233)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 3,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 23)
                     }
                 });
 
-            Assert.IsFalse(taskB.ValidateTask(roundScore));
+            Assert.IsFalse(taskH.ValidateTask(roundScore));
         }
 
         [TestMethod]
-        public void TaskB_LastTwoFlights4MinMaxTests_ScoreTask_HappyPath()
+        public void TaskH_FourThreeTwoOneTests_VerifyTask_OverTime()
         {
             var roundScore = new TimeSheet
             {
@@ -145,7 +135,7 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
                 PilotId = "23423423",
                 RoundOrdinal = 0,
                 Score = 0,
-                TaskId = taskB.Id,
+                TaskId = taskH.Id,
                 TotalPenalties = 0
             };
 
@@ -155,17 +145,75 @@ namespace CDP.AppDomain.Tests.F3K_Task_Tests
                     {
                         Ordinal = 0,
                         GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 240)
+                        Time = new TimeSpan(0, 0, 60)
                     },
                     new TimeGate
                     {
                         Ordinal = 1,
                         GateType = TimeGateType.Task,
-                        Time = new TimeSpan(0, 0, 240)
+                        Time = new TimeSpan(0, 0, 120)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 2,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 183)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 3,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 233)
                     }
                 });
 
-            Assert.IsTrue(taskB.ScoreTask(roundScore) == 480);
+            Assert.IsFalse(taskH.ValidateTask(roundScore));
+        }
+
+        [TestMethod]
+        public void TaskH_FourThreeTwoOneTests_ScoreTask_HappyPath()
+        {
+            var roundScore = new TimeSheet
+            {
+                ContestId = "asdfasf",
+                FlightGroup = FlightGroup.A,
+                Id = "2342342",
+                PilotId = "23423423",
+                RoundOrdinal = 0,
+                Score = 0,
+                TaskId = taskH.Id,
+                TotalPenalties = 0
+            };
+
+            roundScore.TimeGates.AddRange(new List<TimeGate>
+                {
+                    new TimeGate
+                    {
+                        Ordinal = 0,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 60)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 1,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 120)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 2,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 180)
+                    },
+                    new TimeGate
+                    {
+                        Ordinal = 3,
+                        GateType = TimeGateType.Task,
+                        Time = new TimeSpan(0, 0, 233)
+                    }
+                });
+
+            Assert.IsTrue(taskH.ScoreTask(roundScore) == 593);
         }
     }
 }
