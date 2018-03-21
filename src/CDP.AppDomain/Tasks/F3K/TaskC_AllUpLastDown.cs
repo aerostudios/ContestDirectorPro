@@ -20,7 +20,7 @@ namespace CDP.AppDomain.Tasks.F3K
     {
         #region Instance Members
 
-        private int _numberOfFlights = 0;
+        private int numberOfFlights = 0;
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace CDP.AppDomain.Tasks.F3K
         /// <value>
         /// The description.
         /// </value>
-        public override string Description => string.Format("All up last down, 3 min max.  {0} flights.", _numberOfFlights);
+        public override string Description => string.Format("All up last down, 3 min max.  {0} flights.", numberOfFlights);
 
         /// <summary>
         /// Gets or sets the name.
@@ -48,7 +48,7 @@ namespace CDP.AppDomain.Tasks.F3K
         /// <value>
         /// The name.
         /// </value>
-        public override string Name => string.Format("Task C - {0} flights", _numberOfFlights);
+        public override string Name => string.Format("Task C - {0} flights", numberOfFlights);
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is landing scored.
@@ -76,7 +76,7 @@ namespace CDP.AppDomain.Tasks.F3K
         public TaskC_AllUpLastDown(int numberOfFlights = 3)
         {
             Id = "169b456c-9002-4c11-a86e-42c31fbe013" + numberOfFlights;
-            _numberOfFlights = numberOfFlights;
+            this.numberOfFlights = numberOfFlights;
             InitGates();
         }
 
@@ -102,7 +102,7 @@ namespace CDP.AppDomain.Tasks.F3K
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Count() != _numberOfFlights)
+            if (contestTaskToValidate.TimeGates.Count() != numberOfFlights)
             {
                 return false;
             }
@@ -123,7 +123,7 @@ namespace CDP.AppDomain.Tasks.F3K
         /// </summary>
         private void InitGates()
         {
-            for (var i = 0; i < _numberOfFlights; i++)
+            for (var i = 0; i < numberOfFlights; i++)
             {
                 ScoredTimeGates.Add(new TimeGate() { Ordinal = i, Time = TimeSpan.FromMinutes(3) });
 
@@ -136,7 +136,8 @@ namespace CDP.AppDomain.Tasks.F3K
                         Time = TimeSpan.FromMinutes(3)
                     });
 
-                if (i < _numberOfFlights - 1)
+                // Add the landing windows and breaks for all but the last.
+                if (i < numberOfFlights - 1)
                 {
                     TaskFlightWindows.Add(
                         new TimeWindow()
@@ -144,7 +145,7 @@ namespace CDP.AppDomain.Tasks.F3K
                             Ordinal = 0,
                             DirectionOfCount = TimerDirection.CountDown,
                             GateType = TimeGateType.Landing,
-                            Time = TimeSpan.FromMinutes(1)
+                            Time = TimeSpan.FromSeconds(30)
                         });
 
                     TaskFlightWindows.Add(
@@ -156,11 +157,6 @@ namespace CDP.AppDomain.Tasks.F3K
                             Time = TimeSpan.FromMinutes(1)
                         });
                 }
-            }
-
-            for (var j = 0; j < (_numberOfFlights - 1); ++j)
-            {
-
             }
         }
 

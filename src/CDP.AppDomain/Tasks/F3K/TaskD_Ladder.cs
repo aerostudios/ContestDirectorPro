@@ -95,42 +95,49 @@ namespace CDP.AppDomain.Tasks.F3K
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Count() != 7)
+            if (contestTaskToValidate.TimeGates.Count() > 7)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Any(x => x.Time > TimeSpan.FromSeconds(120)))
+            var properGate = contestTaskToValidate.TimeGates.Where(x => x.Time == TimeSpan.FromSeconds(120));
+            if (properGate == null || properGate.Count() != 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromSeconds(105)).Count() > 2)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time == TimeSpan.FromSeconds(105));
+            if (properGate == null || properGate.Count() != 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromMinutes(90)).Count() > 3)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time == TimeSpan.FromSeconds(90));
+            if (properGate == null || properGate.Count() != 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromMinutes(75)).Count() > 4)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time == TimeSpan.FromSeconds(75));
+            if (properGate == null || properGate.Count() != 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromMinutes(60)).Count() > 4)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time == TimeSpan.FromSeconds(60));
+            if (properGate == null || properGate.Count() != 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromMinutes(45)).Count() > 5)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time == TimeSpan.FromSeconds(45));
+            if (properGate == null || properGate.Count() != 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromMinutes(30)).Count() > 6)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time == TimeSpan.FromSeconds(30));
+            if (properGate == null || properGate.Count() != 1)
             {
                 return false;
             }
