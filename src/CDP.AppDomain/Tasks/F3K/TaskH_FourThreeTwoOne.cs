@@ -92,22 +92,31 @@ namespace CDP.AppDomain.Tasks.F3K
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Count() != 4)
+            if (contestTaskToValidate.TimeGates.Count() > 4)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Any(x => x.Time > TimeSpan.FromMinutes(4)))
+            var properGate = contestTaskToValidate.TimeGates.Where(x => x.Time >= TimeSpan.FromMinutes(0) && x.Time <= TimeSpan.FromMinutes(1));
+            if (properGate.Count() > 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromMinutes(3)).Count() > 2)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time > TimeSpan.FromMinutes(1) && x.Time <= TimeSpan.FromMinutes(2));
+            if (properGate.Count() > 1)
             {
                 return false;
             }
 
-            if (contestTaskToValidate.TimeGates.Select(x => x.Time > TimeSpan.FromMinutes(2)).Count() > 3)
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time > TimeSpan.FromMinutes(2) && x.Time <= TimeSpan.FromMinutes(3));
+            if (properGate.Count() > 1)
+            {
+                return false;
+            }
+
+            properGate = contestTaskToValidate.TimeGates.Where(x => x.Time > TimeSpan.FromMinutes(3) && x.Time <= TimeSpan.FromMinutes(4));
+            if (properGate.Count() > 1)
             {
                 return false;
             }
