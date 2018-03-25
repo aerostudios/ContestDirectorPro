@@ -14,6 +14,16 @@ export class Timer {
 
     constructor(direction: boolean) {
         this.direction = direction;
+        this.displayHours = "00";
+        this.displayMinutes = "00";
+        this.displaySeconds = "00";
+        this.displayMilliseconds = "00";
+        this.internalTimer = null;
+        this.direction = false;
+        this.timerIntervalInMilliseconds = 1000;
+        this.totalTimeInMilliseconds = 0;
+
+        this.callerCallBack = () => { return; };
     }
 
     set = (clockTime: string): void => {

@@ -16,6 +16,7 @@ export class TimerPage {
     // Page properties
     public taskName: string;
     public taskId: string;
+    public currentFlightGroup: number;
     public timeRemaining: string;
     public currentTime: string;
     public displayRecordedTimes: string[] = [];
@@ -100,13 +101,21 @@ export class TimerPage {
     constructor(signalr: SignalRConnector, fetchClient: HttpClient) {
 
         this.taskName = "";
+        this.taskId = "";
+        this.currentFlightGroup = 0;
         this.timeRemaining = "00:00:00";
         this.currentTime = "00:00:00";
         this.startStopButtonState = "START";
         this.stopwatchTimer = new Timer(true);
         this.roundCountDownTimer = new Timer(false);
         this.scoringConnection = signalr.scoringConnection;
-
+        this.pilotIdAssignedToTimer = "";
+        this.pilotNameAssignedToTimer = "";
+        this.startTimer = null;
+        this.roundTimer = null;
+        this.startTime = 0;
+        this.stopTime = 0;
+        
         this.fetchClient = fetchClient;
         this.fetchClient.configure(config => {
             config
@@ -141,8 +150,10 @@ export class TimerPage {
             .then(response => response.json())
             .then(data => {
                 this.showPilotList = true;
-                const currentFlightGroup: string = FlightGroup[<number>data.state.currentFlightGroup];
-                for (let pilot of data.rounds[data.state.currentRoundOrdinal].flightGroups[currentFlightGroup]) {
+                this.currentFlightGroup = <number>data.state.currentFlightGroup;
+                const currentFlightGroupEnumVal: string = FlightGroup[this.currentFlightGroup];
+
+                for (let pilot of data.rounds[data.state.currentRoundOrdinal].flightGroups[currentFlightGroupEnumVal]) {
                     let newPilot = new Pilot();
                     newPilot.FirstName = pilot.firstName;
                     newPilot.LastName = pilot.lastName;
@@ -273,10 +284,18 @@ export class TimerPage {
         pilotScore.pilotId = this.pilotIdAssignedToTimer;
         pilotScore.finalTimeSheet = new TimeSheet();
         pilotScore.finalTimeSheet.pilotId = this.pilotIdAssignedToTimer;
+        pilotScore.finalTimeSheet.flightGroup = this.currentFlightGroup.toString();
+        pilotScore.finalTimeSheet.contestId = "";
+        pilotScore.finalTimeSheet.id = "";
+        pilotScore.finalTimeSheet.pilotId = this.pilotIdAssignedToTimer;
+        pilotScore.finalTimeSheet.roundOrdinal = 0;
+        pilotScore.finalTimeSheet.score = 0;
+        pilotScore.finalTimeSheet.taskId = this.taskId;
+        pilotScore.finalTimeSheet.totalPenalties = 0;
 
         let cntr = 0;
         for (let score of this.scoredTimeGates) {
-            pilotScore.finalTimeSheet.timeGates.push(new TimeGate(this.removeMilliseconds(this.displayRecordedTimes[score]), cntr));    
+            pilotScore.finalTimeSheet.timeGates.push(new TimeGate(this.removeMilliseconds(this.displayRecordedTimes[score]), 0, cntr));    
             ++cntr;
         }
 
