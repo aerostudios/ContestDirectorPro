@@ -26,6 +26,20 @@ export class ContestPage {
      */
     constructor(http: HttpClient) {
         this.httpClient = http;
+        this.name = "";
+        this.startDate = "";
+        this.endDate = "";
+        this.currentRoundNumber = 0;
+        this.currentFlightGroup = 0;
+        this.hasStarted = false;
+        this.numberOfRounds = 0;
+        this.numberOfPilots = 0;
+        this.registrationFee = 0;
+        this.numberOfFlyoffRounds = 0;
+        this.allowDroppedRound = false;
+        this.pilotRoster = [];
+        this.rounds = {};
+        this.flightMatrix = null;
 
         http.fetch('api/Contest')
             .then(result => result.json() as Promise<any>)

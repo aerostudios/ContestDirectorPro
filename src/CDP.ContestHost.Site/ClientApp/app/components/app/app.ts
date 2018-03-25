@@ -1,10 +1,10 @@
-import { Aurelia, PLATFORM } from 'aurelia-framework';
+import { Aurelia, PLATFORM, Container } from 'aurelia-framework';
 import { Router, RouterConfiguration } from 'aurelia-router';
 import * as signalR from "@aspnet/signalr-client"
 
 export class App {
-    router: Router;
-
+    router?: Router;
+    
     configureRouter(config: RouterConfiguration, router: Router) {
         config.title = 'CDP.ContestHost.Site';
         config.map([{

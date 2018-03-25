@@ -1,4 +1,4 @@
-﻿import { ITimeSheet } from "../Interfaces/ITimeSheet"
+﻿import { ITimeSheet, TimeSheet } from "../Interfaces/ITimeSheet"
 
 export interface IFinalTimeSheetPostedEventArgs {
     finalTimeSheet: ITimeSheet;
@@ -10,4 +10,10 @@ export class FinalTimeSheetPostedEventArgs implements IFinalTimeSheetPostedEvent
     finalTimeSheet: ITimeSheet;
     pilotId: string;
     timingDeviceId: string;
+
+    constructor() {
+        this.finalTimeSheet = new TimeSheet();
+        this.pilotId = "";
+        this.timingDeviceId = "";
+    }
 }

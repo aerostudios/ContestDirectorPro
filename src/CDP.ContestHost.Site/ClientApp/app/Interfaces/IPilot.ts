@@ -12,4 +12,12 @@ export class Pilot implements IPilot {
     Airframe: string;
     AmaNumber: string;
     Id: string;
+
+    constructor() {
+        this.FirstName = "";
+        this.LastName = "";
+        this.Airframe = "";
+        this.AmaNumber = "";
+        this.Id = "";
+    }
 }
