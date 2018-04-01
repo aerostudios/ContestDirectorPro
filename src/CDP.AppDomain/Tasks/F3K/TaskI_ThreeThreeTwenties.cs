@@ -94,7 +94,7 @@ namespace CDP.AppDomain.Tasks.F3K
 
             if (contestTaskToValidate.TimeGates.Count > 3) { return false; }
 
-            if (contestTaskToValidate.TimeGates.Sum(x => x.Time.TotalSeconds) > 600) { return false; }
+            if (contestTaskToValidate.TimeGates.Sum(x => x.Time.TotalSeconds) > TimeSpan.FromMinutes(10).TotalSeconds) { return false; }
 
             if (contestTaskToValidate.TimeGates.Any(x => x.Time > TimeSpan.FromSeconds(200))) { return false; }
 
